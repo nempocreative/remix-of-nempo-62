@@ -79,21 +79,28 @@ export function LanyardSpinner() {
       // ---- Strap texture: one repeating tile, aspect matches the physical strap.
       const STRAP_W = 0.36;
       const tile = document.createElement("canvas");
-      tile.width = 1536; tile.height = 128;
+      const TW = 1260;
+      tile.width = TW; tile.height = 128;
       const tc = tile.getContext("2d");
       if (!tc) { renderer.dispose(); renderer.domElement.remove(); return; }
-      tc.fillStyle = navy; tc.fillRect(0, 0, 1536, 128);
-      const edge = tc.createLinearGradient(0, 0, 1536, 0);
+      tc.fillStyle = navy; tc.fillRect(0, 0, TW, 128);
+      const edge = tc.createLinearGradient(0, 0, TW, 0);
       edge.addColorStop(0, blue); edge.addColorStop(0.5, violet); edge.addColorStop(1, blue);
-      tc.fillStyle = edge; tc.fillRect(0, 6, 1536, 12); tc.fillRect(0, 110, 1536, 12);
+      tc.fillStyle = edge; tc.fillRect(0, 3, TW, 7); tc.fillRect(0, 118, TW, 7);
+      // NEMPO is the hero of the strap: the real wordmark fills almost the full strap height.
+      if (nempo) {
+        const sx = nempo.width * 0.151, sy = nempo.height * 0.697, sw = nempo.width * 0.703, sh = nempo.height * 0.243;
+        const dh = 100, dw = dh * (sw / sh);
+        tc.drawImage(nempo, sx, sy, sw, sh, 50, 15, dw, dh);
+      } else {
+        tc.fillStyle = ink; tc.font = "bold 96px Arial"; tc.textBaseline = "middle"; tc.fillText("nempo", 50, 62);
+      }
       tc.fillStyle = ink; tc.textBaseline = "middle"; tc.textAlign = "center";
-      tc.font = "bold 62px Arial";
-      tc.fillText("nempo", 260, 66);
-      tc.font = "bold 50px Arial";
-      tc.fillText("KALA MUDA", 1030, 66);
+      tc.font = "bold 36px Arial"; tc.globalAlpha = 0.85;
+      tc.fillText("KALA MUDA", 880, 66); tc.globalAlpha = 1;
       tc.fillStyle = edge;
-      for (const x of [600, 1440]) { tc.beginPath(); tc.arc(x, 64, 11, 0, Math.PI * 2); tc.fill(); }
-      const tileLen = STRAP_W * (1536 / 128);
+      for (const x of [610, 1150]) { tc.beginPath(); tc.arc(x, 64, 9, 0, Math.PI * 2); tc.fill(); }
+      const tileLen = STRAP_W * (TW / 128);
       const strapTex = toTexture(tile);
       strapTex.wrapS = T.RepeatWrapping;
       const strapTexBack = strapTex.clone();
