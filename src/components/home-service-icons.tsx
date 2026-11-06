@@ -117,7 +117,7 @@ function ServiceArt({ id }: ServiceArtProps) {
           <path d="M9 48c0-8 5-13 11-13s9 3 10 6M55 48c0-8-5-13-11-13s-9 3-10 6" fill="#BFDBFE" stroke={outline} strokeWidth="2" strokeLinecap="round" />
           <circle cx="32" cy="29" r="7.5" fill={cream} stroke={outline} strokeWidth="2.1" />
           <path d="M19 52c0-9 6-14 13-14s13 5 13 14Z" fill="#2563EB" stroke={outline} strokeWidth="2.1" strokeLinejoin="round" />
-          <path d="m50 9 1.2 3 3 1.2-3 1.3-1.2 3-1.3-3-3-1.3 3-1.2 1.3-3Z" fill={gold} stroke={outline} strokeWidth="1" />
+          <path d="M32 18.5c-3.6-2.6-6-4.6-6-7.1 0-1.8 1.4-3.1 3.1-3.1 1.2 0 2.2.6 2.9 1.6.7-1 1.7-1.6 2.9-1.6 1.7 0 3.1 1.3 3.1 3.1 0 2.5-2.4 4.5-6 7.1Z" fill="#F472B6" stroke={outline} strokeWidth="1.2" strokeLinejoin="round" />
         </>
       );
     case "merchandise-komunitas":
