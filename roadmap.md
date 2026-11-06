@@ -70,4 +70,4 @@
 - [x] Bumper 3: tulisan Saduli Ragap, tulisan sambung di bawahnya, dan prop di sekitarnya dikecilkan sedikit di ketiga ukuran.
 - [x] Bumper 3: ukuran landscape 4:3 dihapus supaya fokus ke 3:2; 3:2 jadi ukuran default, portrait 3:4 tetap ada.
 - [x] GGS Feed slide 7: video animasi promo Ratus Rp50.000 → Rp45.000, pink Barbie, 3:4; MP4 1080×1440 15 detik 30 fps direkam dari pratinjau dan tombol unduh diuji.
-- [ ] Lanyard 3D Nempo × Kala Muda di Merchandise: tulisan NEMPO di tali diperbesar, desain ID card diganti.
+- [x] Lanyard 3D Nempo × Kala Muda di Merchandise: tulisan NEMPO di tali diperbesar, desain ID card diganti.
