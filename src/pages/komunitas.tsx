@@ -20,7 +20,7 @@ import {
   Music2,
   Palette,
   School,
-  Sparkles,
+  Clapperboard,
   Users,
 } from "lucide-react";
 import communityHeroImage from "@/assets/komunitas-hero.jpg";
@@ -92,7 +92,7 @@ const trackDetails: Record<(typeof interestOptions)[number], Omit<Track, "title"
     image: communityWebImage,
   },
   "Content Creator": {
-    icon: Sparkles,
+    icon: Clapperboard,
     description: "Ide konten, naskah, dan tampil di depan kamera untuk Instagram, TikTok, dan podcast.",
     accent: "#bd4d8b",
     tag: "Konten",
