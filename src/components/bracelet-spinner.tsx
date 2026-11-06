@@ -28,7 +28,7 @@ export function BraceletSpinner() {
       renderer.domElement.setAttribute("aria-label", "Gelang 3D Nempo dan Kala Muda, kedua tulisan di sisi luar");
       const scene = new T.Scene();
       const camera = new T.PerspectiveCamera(38, 1, 0.1, 100);
-      camera.position.set(0, 2.8, 8.8);
+      camera.position.set(0, 1.6, 9.8);
       camera.lookAt(0, 0, 0);
       scene.add(new T.HemisphereLight(ink, navy, 2));
       const light = new T.DirectionalLight(ink, 3);
@@ -42,7 +42,15 @@ export function BraceletSpinner() {
       stripe.addColorStop(0, blue); stripe.addColorStop(.5, violet); stripe.addColorStop(1, blue);
       ctx.fillStyle = stripe; ctx.fillRect(0, 14, 4096, 12); ctx.fillRect(0, 230, 4096, 12);
       ctx.fillStyle = ink; ctx.font = "bold 112px Arial"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-      ctx.fillText("nempo", 1024, 142); ctx.fillText("KALA MUDA", 3072, 142);
+      // Match texture pixels to physical arc length so glyphs keep their aspect ratio.
+      const textScaleX = (4096 / (Math.PI * 4)) / (256 / .55);
+      const drawLettering = (target: CanvasRenderingContext2D) => {
+        for (const [label, x] of [["nempo", 1024], ["KALA MUDA", 3072]] as const) {
+          target.save(); target.translate(x, 142); target.scale(textScaleX, 1);
+          target.fillText(label, 0, 0); target.restore();
+        }
+      };
+      drawLettering(ctx);
       const texture = new T.CanvasTexture(canvas); texture.colorSpace = T.SRGBColorSpace;
       texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
       const reliefCanvas = document.createElement("canvas");
@@ -51,7 +59,7 @@ export function BraceletSpinner() {
       if (reliefCtx) {
         reliefCtx.fillStyle = "#000000"; reliefCtx.fillRect(0, 0, 4096, 256);
         reliefCtx.fillStyle = "#ffffff"; reliefCtx.font = ctx.font; reliefCtx.textAlign = "center"; reliefCtx.textBaseline = "middle";
-        reliefCtx.fillText("nempo", 1024, 142); reliefCtx.fillText("KALA MUDA", 3072, 142);
+        drawLettering(reliefCtx);
       }
       const relief = new T.CanvasTexture(reliefCanvas);
       const outer = new T.MeshStandardMaterial({ map: texture, bumpMap: relief, bumpScale: .018, roughness: .48 });
@@ -97,7 +105,7 @@ export function BraceletSpinner() {
     return () => { disposed = true; cleanup(); };
   }, []);
   return <div className="bracelet-display bg-card relative flex flex-col justify-center">
-    <div ref={host} className="relative aspect-square w-full touch-pan-y cursor-grab overflow-hidden">
+    <div ref={host} className="relative aspect-square w-full touch-pan-y cursor-grab overflow-hidden" style={{ maxWidth: 400, marginInline: "auto" }}>
       {!ready && <img src={fallback} alt="Gelang Nempo × Kala Muda, tulisan pada sisi luar" width={1024} height={1024} className="h-full w-full object-contain" />}
     </div>
     {ready && <Button variant="outline" size="icon" className="absolute bottom-5 right-5" title={isPaused ? "Putar gelang" : "Jeda putaran gelang"} aria-label={isPaused ? "Putar gelang" : "Jeda putaran gelang"} onClick={() => { paused.current = !paused.current; setPaused(paused.current); }}>{isPaused ? <Play /> : <Pause />}</Button>}
