@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] PDH lengan panjang: versi tambahan senada kemeja pendek, dua belas foto transparan; play/jeda dan ukuran komputer/ponsel diuji, empat tes spinner lolos.
+
 - [x] Kaos Nempo × Kala Muda: 12 foto transparan sejajar, tombol play/jeda dan putaran diuji; tampil di komputer/ponsel tanpa error, empat tes spinner lolos.
 
 - [x] Lanjutkan PDH: 12 foto kemeja navy dibuat ulang, latar dihapus, ditambahkan ke Merchandise; putaran, jeda, semua foto dan tampilan ponsel terverifikasi.
