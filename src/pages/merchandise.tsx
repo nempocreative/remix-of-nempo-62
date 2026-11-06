@@ -30,6 +30,9 @@ const pdhFrames = byName(
 const kaosFrames = byName(
   import.meta.glob<string>("/src/assets/kaos-spin-*.webp", { eager: true, import: "default" }),
 );
+const pdhLongFrames = byName(
+  import.meta.glob<string>("/src/assets/pdh-long-spin-*.webp", { eager: true, import: "default" }),
+);
 
 type Spin = { src: string; angle: number }[];
 const pick = (all: string[], list: [number, number][]): Spin =>
