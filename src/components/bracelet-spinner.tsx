@@ -28,7 +28,7 @@ export function BraceletSpinner() {
       renderer.domElement.setAttribute("aria-label", "Gelang 3D Nempo dan Kala Muda, kedua tulisan di sisi luar");
       const scene = new T.Scene();
       const camera = new T.PerspectiveCamera(38, 1, 0.1, 100);
-      camera.position.set(0, 1.2, 8.8);
+      camera.position.set(0, 2.8, 8.8);
       camera.lookAt(0, 0, 0);
       scene.add(new T.HemisphereLight(ink, navy, 2));
       const light = new T.DirectionalLight(ink, 3);
@@ -49,18 +49,18 @@ export function BraceletSpinner() {
       const inner = new T.MeshStandardMaterial({ color: navy, roughness: .7, side: T.BackSide });
       const rim = new T.MeshStandardMaterial({ color: navy, roughness: .6, side: T.DoubleSide });
       const band = new T.Group();
-      band.add(new T.Mesh(new T.CylinderGeometry(2, 2, .62, 160, 1, true), outer));
-      band.add(new T.Mesh(new T.CylinderGeometry(1.82, 1.82, .62, 160, 1, true), inner));
+      band.add(new T.Mesh(new T.CylinderGeometry(2, 2, .85, 160, 1, true), outer));
+      band.add(new T.Mesh(new T.CylinderGeometry(1.88, 1.88, .85, 160, 1, true), inner));
       for (const sign of [-1, 1]) {
         const profile = [];
         for (let j = 0; j <= 16; j++) {
           const a = Math.PI * j / 16;
-          profile.push(new T.Vector2(1.91 + .09 * Math.cos(a), sign * (.31 + .045 * Math.sin(a))));
+          profile.push(new T.Vector2(1.94 + .06 * Math.cos(a), sign * (.425 + .025 * Math.sin(a))));
         }
         band.add(new T.Mesh(new T.LatheGeometry(profile, 160), rim));
       }
-      band.rotation.x = Math.PI / 2 - .18;
-      band.rotation.z = -.15;
+      // Level wristband: only yaw changes, never pitch or roll.
+      band.rotation.set(0, -Math.PI / 2, 0);
       const turntable = new T.Group();
       turntable.add(band); scene.add(turntable);
       const resize = () => { const w = el.clientWidth, h = el.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); };
