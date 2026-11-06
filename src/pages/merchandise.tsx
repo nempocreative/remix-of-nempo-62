@@ -54,8 +54,8 @@ const products = [
 
 // Kecepatan tetap: satu putaran penuh dalam 4,5 detik.
 const DEG_PER_SECOND = 80;
-// Kemiringan maksimum foto (derajat) sebelum foto sudut berikutnya menggantikan.
-const SWING = 6;
+// Tanpa kemiringan: foto dimiringkan lalu kembali tiap pergantian sudut terlihat berdenyut.
+const SWING = 0;
 // Geser 1 px = 0,8° (±450 px untuk satu putaran penuh).
 const DRAG_DEG_PER_PX = 0.8;
 const angleLabel = (a: number) =>
@@ -76,13 +76,12 @@ function VestSpinner({ frames, name }: { frames: Spin; name: string }) {
     let ready = false;
     let alive = true;
     const render = () => {
-      // Hanya satu foto yang tampil; foto itu miring sedikit searah putaran sampai
-      // sudut foto berikutnya tercapai, lalu foto berikutnya menggantikan.
+      // Hanya satu foto yang tampil, diam (tanpa miring), sampai sudut foto
+      // berikutnya tercapai, lalu foto berikutnya menggantikan.
       const s = spinState(pos.current, angles, SWING);
       imgs.current.forEach((el, i) => {
         if (!el) return;
         const o = i === s.i ? "1" : "0";
-        if (i === s.i) el.style.transform = `perspective(1400px) rotateY(${s.rot.toFixed(2)}deg)`;
         if (el.style.opacity !== o) el.style.opacity = o;
       });
     };
@@ -211,17 +210,12 @@ export default function MerchandisePage() {
       </section>
       <style>{`
         .merch-scene { background: radial-gradient(120% 90% at 50% 20%, #2b2f8f 0%, #1a1c55 45%, #0f1030 100%); align-self: stretch; justify-content: center; }
-        .merch-glow { position: absolute; top: 18%; left: 50%; width: 70%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(110,75,180,.55), rgba(37,99,235,.25) 45%, transparent 70%); filter: blur(10px); animation: merch-pulse 4s ease-in-out infinite; }
+        .merch-glow { position: absolute; top: 18%; left: 50%; width: 70%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(110,75,180,.55), rgba(37,99,235,.25) 45%, transparent 70%); filter: blur(10px); }
         .merch-stage { width: min(70vw, 300px); aspect-ratio: 3 / 4; position: relative; cursor: grab; background: none; border: 0; padding: 0; touch-action: pan-y; user-select: none; }
         .merch-stage:active { cursor: grabbing; }
-        .merch-float { position: absolute; inset: 0; animation: merch-float 4s ease-in-out infinite; }
-        .merch-float.is-paused, .merch-scene:has(.is-paused) .merch-shadow { animation-play-state: paused; }
-        .merch-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; will-change: transform; backface-visibility: hidden; }
-        .merch-shadow { position: absolute; left: 22%; right: 22%; bottom: 2%; height: 16px; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(8px); animation: merch-shadow 4s ease-in-out infinite; }
-        @keyframes merch-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes merch-shadow { 0%,100% { transform: scaleX(1); opacity: .9; } 50% { transform: scaleX(.8); opacity: .55; } }
-        @keyframes merch-pulse { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) { .merch-float, .merch-shadow, .merch-glow { animation: none; } }
+        .merch-float { position: absolute; inset: 0; }
+        .merch-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none;  }
+        .merch-shadow { position: absolute; left: 22%; right: 22%; bottom: 2%; height: 16px; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(8px); }
       `}</style>
     </Layout>
   );
