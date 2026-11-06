@@ -5,8 +5,9 @@ import { Link } from "@/lib/wouter";
 
 import { spinState } from "@/lib/spin-frames";
 
-// Foto putaran 360°: 24 sudut (0°, 15°, …, 345°) rompi yang dipakai manekin,
-// semuanya sudah disejajarkan (tinggi & poros manekin sama) supaya putarannya tidak goyang.
+// Foto putaran 360° rompi di manekin (tinggi & poros manekin sudah disejajarkan).
+// Sudut foto aslinya tidak rata, jadi tiap foto yang dipakai dicatat sudut sebenarnya
+// (urutan diperbaiki, foto kembar / bertepi putih / beda ukuran tidak dipakai).
 const byName = (g: Record<string, string>) =>
   Object.keys(g)
     .sort()
@@ -18,10 +19,22 @@ const nempoFrames = byName(
   import.meta.glob<string>("/src/assets/rompi-spin-nempo-*.webp", { eager: true, import: "default" }),
 );
 
+type Spin = { src: string; angle: number }[];
+const pick = (all: string[], list: [number, number][]): Spin =>
+  list.map(([i, angle]) => ({ src: all[i] as string, angle })).filter((f) => !!f.src);
+const lapanganSpin = pick(lapanganFrames, [
+  [0, 0], [2, 22], [3, 33], [4, 48], [5, 62], [6, 90], [8, 118], [7, 138], [9, 155], [11, 170], [12, 180],
+  [13, 190], [15, 198], [14, 208], [16, 228], [17, 238], [18, 262], [19, 292], [21, 316], [22, 332], [23, 347],
+]);
+const nempoSpin = pick(nempoFrames, [
+  [0, 0], [1, 18], [2, 30], [4, 48], [5, 62], [6, 90], [7, 115], [8, 130], [9, 148], [11, 165],
+  [13, 195], [15, 207], [14, 218], [16, 236], [17, 248], [18, 270], [19, 298], [21, 322], [22, 338], [23, 350],
+]);
+
 const products = [
   {
     name: "Rompi Lapangan Nempo",
-    frames: lapanganFrames,
+    frames: lapanganSpin,
     desc: "Rompi crew lapangan dengan webbing modular di depan, aksen gradasi biru-ungu Kala Muda dan strip reflektif. Semua alat penting di lapangan punya tempatnya sendiri.",
     features: [
       "Holster HT di dada + kantong HP",
@@ -33,29 +46,29 @@ const products = [
   },
   {
     name: "Rompi Nempo",
-    frames: nempoFrames,
+    frames: nempoSpin,
     desc: "Rompi utility warna navy dengan aksen gradasi biru-ungu khas Kala Muda, logo nempo di dada dan lambang \"n\" besar di punggung, ditemani logo kecil KALA MUDA.",
     features: ["Kantong depan + saku ritsleting", "Strap samping bisa disesuaikan", "Lapisan dalam jaring, adem dipakai"],
   },
 ];
 
-// 24 sudut × 0,15 detik = satu putaran penuh dalam 3,6 detik.
-const SECONDS_PER_ANGLE = 0.15;
-// Kemiringan foto (derajat) di antara dua sudut foto yang berjarak 15°.
-const SWING = 5;
-// Geser 18 px = satu sudut (±430 px untuk satu putaran penuh).
-const DRAG_PX_PER_ANGLE = 18;
-const LABELS = ["depan", "serong kiri", "samping kiri", "serong belakang", "belakang", "serong belakang", "samping kanan", "serong kanan"];
-const angleLabel = (i: number) => (i % 3 === 0 ? (LABELS[i / 3] ?? "") : `sudut ${i * 15}°`);
+// Kecepatan tetap: satu putaran penuh dalam 4,5 detik.
+const DEG_PER_SECOND = 80;
+// Kemiringan maksimum foto (derajat) sebelum foto sudut berikutnya menggantikan.
+const SWING = 6;
+// Geser 1 px = 0,8° (±450 px untuk satu putaran penuh).
+const DRAG_DEG_PER_PX = 0.8;
+const angleLabel = (a: number) =>
+  a < 10 || a > 350 ? "depan" : a > 170 && a < 190 ? "belakang" : a > 80 && a < 100 ? "samping" : `sudut ${a}°`;
 
-function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
+function VestSpinner({ frames, name }: { frames: Spin; name: string }) {
   const [paused, setPaused] = useState(false);
   const imgs = useRef<(HTMLImageElement | null)[]>([]);
   const pos = useRef(0);
   const dragging = useRef<{ x: number; start: number; moved: boolean } | null>(null);
 
   useEffect(() => {
-    const n = frames.length;
+    const angles = frames.map((f) => f.angle);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let last = performance.now();
@@ -63,32 +76,21 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
     let ready = false;
     let alive = true;
     const render = () => {
-      // Foto sudut sekarang tetap penuh di bawah; foto sudut berikutnya memudar masuk
-      // di atasnya pada akhir langkah. Keduanya miring searah putaran dan foto berikutnya
-      // selalu 2×SWING di depan, jadi gambarnya menyatu dan perpindahannya mulus.
-      const s = spinState(pos.current, n, SWING);
+      // Hanya satu foto yang tampil; foto itu miring sedikit searah putaran sampai
+      // sudut foto berikutnya tercapai, lalu foto berikutnya menggantikan.
+      const s = spinState(pos.current, angles, SWING);
       imgs.current.forEach((el, i) => {
         if (!el) return;
-        let o = "0";
-        let z = "0";
-        if (i === s.a) {
-          o = "1";
-          z = "1";
-          el.style.transform = `perspective(1400px) rotateY(${s.rotA.toFixed(2)}deg)`;
-        } else if (i === s.b && s.fade > 0) {
-          o = s.fade.toFixed(3);
-          z = "2";
-          el.style.transform = `perspective(1400px) rotateY(${s.rotB.toFixed(2)}deg)`;
-        }
+        const o = i === s.i ? "1" : "0";
+        if (i === s.i) el.style.transform = `perspective(1400px) rotateY(${s.rot.toFixed(2)}deg)`;
         if (el.style.opacity !== o) el.style.opacity = o;
-        if (el.style.zIndex !== z) el.style.zIndex = z;
       });
     };
     const tick = (now: number) => {
       // Batasi lompatan waktu (mis. setelah pindah tab) supaya tidak meloncat.
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      if (ready && !paused && !reduce && !dragging.current) pos.current += dt / SECONDS_PER_ANGLE;
+      if (ready && !paused && !reduce && !dragging.current) pos.current += dt * DEG_PER_SECOND;
       render();
       raf = visible ? requestAnimationFrame(tick) : 0;
     };
@@ -116,7 +118,7 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
       io?.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [frames.length, paused]);
+  }, [frames, paused]);
 
   return (
     <div className="merch-scene relative flex flex-col items-center overflow-hidden px-6 pb-6 pt-10">
@@ -134,7 +136,7 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
           if (!g) return;
           const dx = e.clientX - g.x;
           if (Math.abs(dx) > 4) g.moved = true;
-          pos.current = g.start - dx / DRAG_PX_PER_ANGLE;
+          pos.current = g.start - dx * DRAG_DEG_PER_PX;
         }}
         onPointerUp={() => {
           const g = dragging.current;
@@ -146,14 +148,14 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
         }}
       >
         <div className={`merch-float ${paused ? "is-paused" : ""}`}>
-          {frames.map((src, i) => (
+          {frames.map(({ src, angle }, i) => (
             <img
               key={src}
               ref={(el) => {
                 imgs.current[i] = el;
               }}
               src={src}
-              alt={`${name} tampak ${angleLabel(i)}`}
+              alt={`${name} tampak ${angleLabel(angle)}`}
               decoding="async"
               draggable={false}
               className="merch-face"
