@@ -67,7 +67,7 @@ export function GgsPromoSpesialSlide({ exportRef }: { exportRef?: RefObject<HTML
             <path id="ggp-ring-path" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0" />
           </defs>
           <text>
-            <textPath href="#ggp-ring-path" startOffset="0">
+            <textPath href="#ggp-ring-path" startOffset="0" textLength="486" lengthAdjust="spacing">
               PROMO SPESIAL • GGS BEAUTY • PROMO SPESIAL • GGS BEAUTY •
             </textPath>
           </text>
