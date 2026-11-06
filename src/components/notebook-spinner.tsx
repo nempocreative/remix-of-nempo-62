@@ -58,8 +58,8 @@ export function NotebookSpinner() {
       scene.environment = envTex;
       scene.environmentIntensity = 0.5;
       const camera = new T.PerspectiveCamera(30, 3 / 4, 0.1, 100);
-      camera.position.set(0, 1.1, 7.4);
-      camera.lookAt(0, -0.12, 0);
+      camera.position.set(0, 1.0, 6.3);
+      camera.lookAt(0, -0.18, 0);
       const key = new T.DirectionalLight(ink, 2.1);
       key.position.set(3, 4, 6); scene.add(key);
       const fill = new T.DirectionalLight(violet, 0.7);
