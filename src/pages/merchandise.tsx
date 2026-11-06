@@ -60,8 +60,13 @@ const products: { name: string; frames?: Spin; bracelet?: boolean; lanyard?: boo
     features: ["Kerah runcing dan epolet bahu", "Dua saku dada dengan penutup", "Bordir Nempo dan Kala Muda di dada", "Identitas Nempo × Kala Muda di punggung"],
   },
   {
+    name: "Kemeja PDH Lengan Panjang Nempo × Kala Muda",
+    frames: pick(pdhLongFrames, [[0, 0], [1, 20], [2, 60], [3, 90], [4, 145], [5, 160], [6, 180], [7, 205], [8, 235], [9, 270], [10, 310], [11, 335]]),
+    desc: "Konsep kemeja PDH navy lengan panjang dengan manset berkancing, senada dengan versi lengan pendek untuk tim Nempo × Kala Muda.",
+    features: ["Lengan panjang dengan manset berkancing", "Kerah runcing, epolet dan dua saku dada", "Aksen biru-ungu di bahu dan manset", "Logo Nempo dan Kala Muda di dada serta punggung"],
+  },
+  {
     name: "Rompi Lapangan Nempo",
-    frames: lapanganSpin,
     frames: lapanganSpin,
     desc: "Rompi crew lapangan dengan webbing modular di depan, aksen gradasi biru-ungu Kala Muda dan strip reflektif. Semua alat penting di lapangan punya tempatnya sendiri.",
     features: [
