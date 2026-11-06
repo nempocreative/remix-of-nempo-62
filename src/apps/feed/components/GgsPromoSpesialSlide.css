@@ -214,3 +214,22 @@
   .ggp-glitter { display: none; }
   .ggp-phase { filter: none; }
 }
+
+/* Slide 11: still version — no motion, all promos listed */
+.ggp-root--still *, .ggp-root--still *::before, .ggp-root--still *::after { animation: none !important; }
+.ggp-root--still .ggp-title-word { opacity: 1; transform: none; }
+.ggp-root--still .ggp-card.ggp-list {
+  top: 66cqw; height: auto; padding: 2cqw 5cqw;
+  display: flex; flex-direction: column;
+}
+.ggp-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 3cqw;
+  padding: 1.3cqw 0; border-bottom: .3cqw dashed rgba(194,24,107,.25);
+}
+.ggp-item:last-child { border-bottom: 0; }
+.ggp-item .ggp-tag { font-size: 2.9cqw; white-space: normal; }
+.ggp-item-name { display: flex; flex-direction: column; gap: .4cqw; }
+.ggp-item-name small { font-size: 2.4cqw; font-weight: 600; letter-spacing: .04em; text-transform: none; opacity: .7; }
+.ggp-item .ggp-value { font-size: 7.4cqw; transform: none; }
+.ggp-item .ggp-rp { font-size: 3.4cqw; }
+.ggp-item .ggp-pct { font-size: 4.6cqw; }
