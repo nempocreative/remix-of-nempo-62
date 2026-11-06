@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Kaos Nempo × Kala Muda: 12 foto transparan sejajar, tombol play/jeda dan putaran diuji; tampil di komputer/ponsel tanpa error, empat tes spinner lolos.
+
 - [x] Lanjutkan PDH: 12 foto kemeja navy dibuat ulang, latar dihapus, ditambahkan ke Merchandise; putaran, jeda, semua foto dan tampilan ponsel terverifikasi.
 
 - [x] GGS slide 7: pinggiran putih dihapus lewat capture artboard tepat 1080×1440 pada koordinat integer, lima pergantian teks sepanjang 20 detik; MP4 600 frame 30 fps H.264 High CRF 16 slow (8,6 MB) direkam ulang, decode dan checksum unduhan cocok; desktop/ponsel tanpa error, slide 8 tetap 15 detik. Tes durasi lolos; tes kelengkapan masih gagal pada 85 pointer asing lama, bukan video slide 7 baru.

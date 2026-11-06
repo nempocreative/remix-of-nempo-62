@@ -1,5 +1,7 @@
 # Page architecture rules
 
+- T-shirts reuse the clothing single-visible-photo spinner with aligned transparent frames and explicit angles; why: preserve the existing clothing controls without introducing overlapping images or claiming photo steps are a continuous 3D model.
+
 - PDH shirts reuse the merchandise single-visible-photo spinner with aligned transparent frames and explicit viewing angles; why: keep shirt and vest controls consistent without introducing ghosting or wobble.
 
 - Invitation catalog covers use stored portrait captures of each actual closed invitation, mapped by stable theme code; why: thumbnails must match the real design and keep identical proportions across screen sizes. Refresh the capture when a cover design changes.
