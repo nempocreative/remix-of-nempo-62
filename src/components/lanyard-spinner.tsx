@@ -195,9 +195,9 @@ export function LanyardSpinner() {
           fc.drawImage(nempo, (W - lw) / 2, 112, lw, lh);
         }
         fc.textAlign = "center"; fc.textBaseline = "middle";
-        fc.fillStyle = navy; fc.font = "900 128px Arial";
+        fc.fillStyle = navy; fc.font = "bold 128px Arial";
         fc.letterSpacing = "10px"; fc.fillText("CREW", W / 2 + 5, H * 0.68); fc.letterSpacing = "0px";
-        fc.fillStyle = violet; fc.font = "bold 26px Arial";
+        fc.fillStyle = violet; fc.font = "bold 30px Arial";
         fc.letterSpacing = "6px"; fc.fillText("NEMPO × KALA MUDA", W / 2 + 3, H * 0.68 + 92); fc.letterSpacing = "0px";
         fc.fillStyle = grad(fc); fc.fillRect(W / 2 - 60, H * 0.68 + 132, 120, 6);
         if (kala) {
