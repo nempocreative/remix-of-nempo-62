@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture rules
+- The bracelet uses a dynamically imported Three.js cylindrical band with exterior lettering texture and a photo fallback; why: a real mesh rotates smoothly without image-frame jumps, and both brands remain on the exterior.
 - MusiComedy's opening bumper lives in its own feed tab with a 4:3 landscape animated stage (ending on a menu-ordering message) and a pre-rendered MP4 download; why: event playback and export must match without changing existing slides.
 - Bumper 2 lives in `NempoLogoOpening` with its own `nlo-` styles, separate transparent tagline images, a 12 s CSS timeline shared with a synthesized gamelan track in `public/audio/`, and a prerecorded MP4 with that audio; why: each phrase must animate independently, audio uses public URLs, and playback and download must stay in sync.
 - The bumper shows the NEMPO logo and the date/venue footer only in the opening segment and never uses dancer silhouettes; why: the owner asked both to be opening-only/removed, and the stage stays clean for the performers segment.
