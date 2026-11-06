@@ -5,6 +5,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.bracelet-display {
+  position: relative;
+  --bracelet-band: #101d37;
+  --bracelet-letter: #ffffff;
+  --bracelet-blue: #2695f2;
+  --bracelet-violet: #8452e5;
+}
+.bracelet-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
+
 /* MusiComedy opening film: palette scoped to the feed's bumper. */
 .mc-bumper-tool, .mc-bumper-tab {
   --bumper-paper: oklch(0.97 0.03 85);

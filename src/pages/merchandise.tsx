@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { Link } from "@/lib/wouter";
-import braceletImage from "@/assets/merch-gelang-nempo-kalamuda.jpg";
+import { BraceletSpinner } from "@/components/bracelet-spinner";
 
 import { spinState } from "@/lib/spin-frames";
 
@@ -35,7 +35,7 @@ const nempoSpin = pick(nempoFrames, [
   [13, 195], [15, 207], [14, 218], [16, 236], [17, 248], [18, 270], [19, 298], [21, 322], [22, 338], [23, 350],
 ]);
 
-const products: { name: string; frames?: Spin; image?: string; desc: string; features: string[] }[] = [
+const products: { name: string; frames?: Spin; bracelet?: boolean; desc: string; features: string[] }[] = [
   {
     name: "Kemeja PDH Nempo × Kala Muda",
     frames: pick(pdhFrames, [[0, 0], [1, 20], [2, 60], [3, 90], [4, 145], [5, 160], [6, 180], [7, 205], [8, 235], [9, 270], [10, 310], [11, 335]]),
@@ -62,9 +62,9 @@ const products: { name: string; frames?: Spin; image?: string; desc: string; fea
   },
   {
     name: "Gelang Nempo × Kala Muda",
-    image: braceletImage,
+    bracelet: true,
     desc: "Konsep gelang silikon navy dengan aksen biru-ungu yang senada dengan kemeja dan rompi komunitas.",
-    features: ["Desain band melingkar tanpa pengait", "Tulisan Nempo di sisi luar", "Identitas Kala Muda di sisi dalam", "Aksen garis biru-ungu di tepi gelang"],
+    features: ["Desain band melingkar tanpa pengait", "Tulisan Nempo dan Kala Muda di sisi luar", "Sisi dalam polos navy", "Aksen garis biru-ungu di tepi gelang"],
   },
 ];
 
@@ -204,11 +204,7 @@ export default function MerchandisePage() {
 
         {products.map((p) => (
         <article key={p.name} className="mt-8 overflow-hidden rounded-3xl border border-[#dce4fb] bg-white shadow-sm md:grid md:grid-cols-[1fr_1fr] md:items-stretch">
-          {p.frames ? <VestSpinner frames={p.frames} name={p.name} /> : (
-            <div className="flex items-center justify-center bg-card">
-              <img src={p.image} alt={p.name} loading="lazy" width={1024} height={1024} className="aspect-square w-full object-contain" />
-            </div>
-          )}
+          {p.bracelet ? <BraceletSpinner /> : p.frames ? <VestSpinner frames={p.frames} name={p.name} /> : null}
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-8">
             <span className="w-fit rounded-full bg-[#182b39] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Segera hadir</span>
             <h2 className="text-2xl font-black text-[#182b39]">{p.name}</h2>
