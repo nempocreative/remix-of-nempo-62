@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] GGS Feed slide 12: “We are open”, dua foto kiriman memakai blazer pink, gerakan menyambut, ajakan perawatan, dan MP4 sesuai tampilan.
+- [x] GGS Feed slide 12: “We are open”, dua foto kiriman diedit memakai blazer pink, gerakan menyambut, ajakan perawatan, tombol jeda/ulang teruji komputer/ponsel, MP4 1080×1440 30 fps 8 detik. Enam tes slide lama lolos; tes media lama masih menemukan 134 pointer proyek asal yang tidak terkait slide baru.
 
 - [x] PDH lengan panjang: versi tambahan senada kemeja pendek, dua belas foto transparan; play/jeda dan ukuran komputer/ponsel diuji, empat tes spinner lolos.
 

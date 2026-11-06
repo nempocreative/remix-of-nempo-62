@@ -7,6 +7,7 @@ import ggsRatusBenefitPng from '@/assets/ggs-feed-08-ratus-manfaat.png';
 import ggsNailPahlawanPng from '@/assets/ggs-feed-09-nail-pahlawan.png';
 import ggsPromoSpesialPng from '@/assets/ggs-feed-11-promo-spesial.png';
 import ggsPromoSpesialVideo from '@/assets/ggs-feed-10-promo-spesial.mp4';
+import ggsWeAreOpenVideo from '@/assets/ggs-feed-12-we-are-open.mp4';
 import { PrebuiltPngDownload } from './components/PrebuiltPngDownload';
 import {
   FaFileExcel,
@@ -3173,7 +3174,14 @@ function App() {
         </div>
         {!isCoupon && !isQCard && !isSpreadsheet && !isRundown && !isBumper && (
           <div className="mb-3 flex flex-col items-center gap-2">
-            {activeFeed === 'client' && activeClientSlide === 10 ? (
+            {activeFeed === 'client' && activeClientSlide === 12 ? (
+              <Button asChild>
+                <a href={ggsWeAreOpenVideo} download="GGS-Feed-12-We-Are-Open.mp4">
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Download video · MP4
+                </a>
+              </Button>
+            ) : activeFeed === 'client' && activeClientSlide === 10 ? (
               <>
                 <a
                   href={ggsPromoSpesialVideo}
