@@ -15,13 +15,14 @@ export type SpinState = {
   fade: number;
 };
 
-export const FADE_PORTION = 0.25;
+// 0 = no blending: only one photo is ever visible, so no double image.
+export const FADE_PORTION = 0;
 
 export function spinState(pos: number, n: number, swing: number): SpinState {
   const p = ((pos % n) + n) % n;
   const a = Math.floor(p) % n;
   const f = p - Math.floor(p);
-  const t = Math.max(0, (f - (1 - FADE_PORTION)) / FADE_PORTION);
+  const t = FADE_PORTION > 0 ? Math.max(0, (f - (1 - FADE_PORTION)) / FADE_PORTION) : 0;
   const fade = t * t * (3 - 2 * t);
   return {
     a,

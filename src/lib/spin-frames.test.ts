@@ -2,13 +2,14 @@ import { describe, expect, it } from "vitest";
 import { spinState } from "./spin-frames";
 
 describe("merchandise 360° spinner", () => {
-  it("hands over to the next photo with no jump in tilt", () => {
+  it("never shows two photos at once (no double image)", () => {
     const end = spinState(4.9999, 24, 5);
     const next = spinState(5, 24, 5);
     expect(end.b).toBe(5);
     expect(next.a).toBe(5);
-    expect(end.fade).toBeCloseTo(1, 3);
-    expect(end.rotB).toBeCloseTo(next.rotA, 2);
+    expect(end.fade).toBe(0);
+    expect(end.rotA).toBeCloseTo(-5, 2);
+    expect(next.rotA).toBeCloseTo(5, 2);
   });
 
   it("shows only one photo in the first part of each step", () => {
