@@ -1,0 +1,10 @@
+[
+  {"capability":"code, pages, assets","source":"github nempocreative/nempo-58","outcome":"migrate","status":"in_progress","next_action":"copy source and verify build"},
+  {"capability":"media files stored in previous projects (asset pointers)","source":"src/**/*.asset.json","outcome":"migrate","status":"in_progress","next_action":"re-upload into this project's storage"},
+  {"capability":"schema (21 tables, has_role, access rules)","source":"src/integrations/supabase/types.ts","outcome":"migrate","status":"pending","next_action":"recreate in Lovable Cloud"},
+  {"capability":"seed rows in repository (events, tickets)","source":"src/data","outcome":"migrate","status":"pending","next_action":"insert via migration"},
+  {"capability":"records","source":"previous Lovable Cloud database","outcome":"migrate","status":"pending","next_action":"user downloads /backup JSON or table CSVs from old project and attaches it"},
+  {"capability":"admin sign-in for /cms (user_roles)","source":"previous auth","outcome":"migrate","status":"pending","next_action":"user provides admin email; create account and admin role"},
+  {"capability":"public /api read bridge","source":"src/routes/api/$.ts","outcome":"preserve","status":"pending","next_action":"verify against Cloud"},
+  {"capability":"verification","source":"-","outcome":"migrate","status":"pending","next_action":"build, routes, CMS read"}
+]
