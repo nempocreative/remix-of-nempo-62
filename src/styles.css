@@ -24,6 +24,17 @@
   --lanyard-paper: #f7f8fc;
 }
 .lanyard-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
+.notebook-display {
+  position: relative;
+  --notebook-cover: #101d37;
+  --notebook-deep: #0a1228;
+  --notebook-letter: #ffffff;
+  --notebook-blue: #2695f2;
+  --notebook-violet: #8452e5;
+  --notebook-paper: #f4efe3;
+  --notebook-paper-edge: #d9d1bf;
+}
+.notebook-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
 
 /* MusiComedy opening film: palette scoped to the feed's bumper. */
 .mc-bumper-tool, .mc-bumper-tab {
