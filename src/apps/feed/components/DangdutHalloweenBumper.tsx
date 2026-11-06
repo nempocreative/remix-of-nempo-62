@@ -1,13 +1,35 @@
-import { useState } from 'react';
-import { Pause, Play, RotateCcw } from 'lucide-react';
+import { useState, type MouseEvent } from 'react';
+import { Download, Pause, Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import stage from '@/assets/dangdut-halloween-stage.jpg';
 import srLogo from '@/assets/saduli-ragap-entertainment-logo-keyed.png';
 import pumpkin from '@/assets/ddh-pumpkin.png';
 import bat from '@/assets/ddh-bat.png';
 import kendang from '@/assets/ddh-kendang.png';
+import wideVideo from '@/assets/dangdut-halloween-bumper-1620x1080.mp4.asset.json';
+import portraitVideo from '@/assets/dangdut-halloween-bumper-1080x1440.mp4.asset.json';
 
 type Ratio = 'wide' | 'portrait';
+
+const VIDEO: Record<'wide' | 'portrait', { url: string; name: string }> = {
+  wide: { url: wideVideo.url, name: 'Dangdut-Halloween-Bumper-1620x1080.mp4' },
+  portrait: { url: portraitVideo.url, name: 'Dangdut-Halloween-Bumper-1080x1440.mp4' },
+};
+
+async function downloadVideo(e: MouseEvent<HTMLAnchorElement>, url: string, name: string) {
+  e.preventDefault();
+  try {
+    const res = await fetch(url);
+    if (!res.ok || !(res.headers.get('content-type') || '').includes('video')) throw new Error('bad response');
+    const href = URL.createObjectURL(new Blob([await res.arrayBuffer()], { type: 'video/mp4' }));
+    const a = document.createElement('a');
+    a.href = href; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(href), 30000);
+  } catch {
+    window.location.href = url;
+  }
+}
 
 const RATIO_LABEL: Record<Ratio, string> = { wide: '3:2', portrait: '3:4' };
 
@@ -26,6 +48,7 @@ export function DangdutHalloweenBumper() {
           {playing ? <Pause /> : <Play />}
         </Button>
         <Button variant="outline" size="icon" aria-label="Putar ulang" onClick={() => { setVersion((v) => v + 1); setPlaying(true); }}><RotateCcw /></Button>
+        <Button asChild><a href={VIDEO[ratio].url} download={VIDEO[ratio].name} onClick={(e) => downloadVideo(e, VIDEO[ratio].url, VIDEO[ratio].name)}><Download />Download MP4</a></Button>
       </div>
       <div
         key={`${ratio}-${version}`}
