@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] GGS Feed slide 12: “We are open”, dua foto kiriman memakai blazer pink, gerakan menyambut, ajakan perawatan, dan MP4 sesuai tampilan.
+
 - [x] PDH lengan panjang: versi tambahan senada kemeja pendek, dua belas foto transparan; play/jeda dan ukuran komputer/ponsel diuji, empat tes spinner lolos.
 
 - [x] Kaos Nempo × Kala Muda: 12 foto transparan sejajar, tombol play/jeda dan putaran diuji; tampil di komputer/ponsel tanpa error, empat tes spinner lolos.
