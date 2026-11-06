@@ -89,6 +89,7 @@ import { GgsMemberCardDesigner } from './components/GgsMemberCardDesigner';
 import { Ggs2027Calendar } from './components/Ggs2027Calendar';
 import { GgsRatusBenefitSlide } from './components/GgsRatusBenefitSlide';
 import { GgsNailPahlawanSlide } from './components/GgsNailPahlawanSlide';
+import { GgsPromoSpesialSlide } from './components/GgsPromoSpesialSlide';
 import { GgsRatusPromoSlide } from './components/GgsRatusPromoSlide';
 
 const SpreadsheetViewer = lazy(async () => {
@@ -133,7 +134,7 @@ type FeedSlide =
   | 33
   | 34;
 
-type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 const cafes = [
   {
@@ -2649,6 +2650,10 @@ function ClientFeedArtwork({
     return <GgsNailPahlawanSlide exportRef={exportRef} />;
   }
 
+  if (!isStory && slide === 10) {
+    return <GgsPromoSpesialSlide exportRef={exportRef} />;
+  }
+
   if (!isStory && slide === 7) {
     return <GgsRatusPromoSlide key={slide} exportRef={exportRef} subject="client" />;
   }
@@ -2990,7 +2995,7 @@ function App() {
       : isGgsFeed
       ? isGgsStory
         ? [1, 2, 3]
-        : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34];
   const selectedSlide =
     isGgsFeed ? activeClientSlide : activeSlide;
