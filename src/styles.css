@@ -35,6 +35,17 @@
   --notebook-paper-edge: #d9d1bf;
 }
 .notebook-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
+.tumbler-display {
+  position: relative;
+  --tumbler-body: #101d37;
+  --tumbler-lid: #0a1228;
+  --tumbler-letter: #ffffff;
+  --tumbler-blue: #2695f2;
+  --tumbler-violet: #8452e5;
+  --tumbler-metal: #c9ced8;
+  --tumbler-shadow: rgba(10, 18, 40, 0.35);
+}
+.tumbler-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
 
 /* MusiComedy opening film: palette scoped to the feed's bumper. */
 .mc-bumper-tool, .mc-bumper-tab {

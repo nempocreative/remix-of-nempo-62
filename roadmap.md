@@ -72,3 +72,4 @@
 - [x] GGS Feed slide 7: video animasi promo Ratus Rp50.000 → Rp45.000, pink Barbie, 3:4; MP4 1080×1440 15 detik 30 fps direkam dari pratinjau dan tombol unduh diuji.
 - [x] Lanyard 3D Nempo × Kala Muda di Merchandise: tulisan NEMPO di tali diperbesar, desain ID card diganti.
 - [x] Buku notes 3D Nempo × Kala Muda di Merchandise: hardcover A5 berputar dengan tombol jeda; depan, belakang, punggung buku dan tampilan ponsel diperiksa.
+- [x] Tumbler 3D Nempo × Kala Muda di Merchandise: berputar dengan tombol jeda; delapan sudut, jeda dan tampilan ponsel diperiksa.
