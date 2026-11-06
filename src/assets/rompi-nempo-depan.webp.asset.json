@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "f7c4c5ee-d3de-4d71-b198-1640aeb9e92a",
-  "project_id": "5acb3e1d-e716-4ee7-8bf8-68010223a569",
-  "url": "/__l5e/assets-v1/f7c4c5ee-d3de-4d71-b198-1640aeb9e92a/rompi-nempo-depan.webp",
-  "r2_key": "a/v1/5acb3e1d-e716-4ee7-8bf8-68010223a569/f7c4c5ee-d3de-4d71-b198-1640aeb9e92a/rompi-nempo-depan.webp",
-  "original_filename": "rompi-nempo-depan.webp",
-  "size": 45072,
   "content_type": "image/webp",
-  "created_at": "2026-11-06T12:15:27Z"
+  "created_at": "2026-11-06T12:15:27Z",
+  "original_filename": "rompi-nempo-depan.webp",
+  "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/f7c4c5ee-d3de-4d71-b198-1640aeb9e92a/rompi-nempo-depan.webp",
+  "size": 45072,
+  "url": "/__l5e/assets-v1/f7c4c5ee-d3de-4d71-b198-1640aeb9e92a/rompi-nempo-depan.webp",
+  "version": 1
 }
