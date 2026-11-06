@@ -63,8 +63,8 @@ const products: { name: string; frames?: Spin; bracelet?: boolean; desc: string;
   {
     name: "Gelang Nempo × Kala Muda",
     bracelet: true,
-    desc: "Konsep gelang silikon navy dengan aksen biru-ungu yang senada dengan kemeja dan rompi komunitas.",
-    features: ["Desain band melingkar tanpa pengait", "Tulisan Nempo dan Kala Muda di sisi luar", "Sisi dalam polos navy", "Aksen garis biru-ungu di tepi gelang"],
+    desc: "Konsep gelang silikon sporty navy, dengan band ramping dan dua garis biru-ungu yang senada dengan kemeja dan rompi komunitas.",
+    features: ["Band ramping dengan tepi membulat", "Tulisan timbul Nempo dan Kala Muda di sisi luar", "Sisi dalam polos navy", "Dua garis biru-ungu di tepi gelang"],
   },
 ];
 
