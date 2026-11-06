@@ -265,9 +265,6 @@ export default function MerchandisePage() {
               <Link href="/komunitas" className="inline-flex justify-center rounded-full bg-[#a62f78] px-5 py-3 text-sm font-bold text-white hover:bg-[#862761]">
                 Gabung Komunitas
               </Link>
-              <Link href="/recruitment" className="inline-flex justify-center rounded-full border border-[#c8c8e7] px-5 py-3 text-sm font-bold text-[#49346e] hover:border-[#a62f78]/50">
-                Daftar Recruitment
-              </Link>
             </div>
           </div>
         </article>
