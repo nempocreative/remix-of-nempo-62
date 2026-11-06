@@ -5,6 +5,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* GGS open slide: shared brand palette, separate from other feeds. */
+.ggo-root {
+  --ggo-ink: #4a0e33;
+  --ggo-pink: #c2186b;
+  --ggo-paper: #fff5fa;
+  --ggo-accent: #ffb9d8;
+  --ggo-shade: linear-gradient(180deg, color-mix(in srgb, var(--ggo-paper) 95%, transparent) 0%, color-mix(in srgb, var(--ggo-paper) 90%, transparent) 24%, transparent 39%, transparent 64%, color-mix(in srgb, var(--ggo-ink) 85%, transparent) 83%, var(--ggo-ink) 100%);
+  --ggo-title-fill: linear-gradient(110deg, var(--ggo-pink) 25%, var(--ggo-accent) 48%, var(--ggo-pink) 70%);
+}
+
 .bracelet-display {
   position: relative;
   --bracelet-band: #101d37;
