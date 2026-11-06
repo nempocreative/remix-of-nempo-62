@@ -1,5 +1,6 @@
 import type { CSSProperties, RefObject } from 'react';
 import promoPhoto from '@/assets/ggs-promo-spesial.jpg';
+import stillPhoto from '@/assets/ggs-promo-spesial-still.jpg';
 import ggsWatermark from '@/assets/ggs-header-footer.png.asset.json';
 import './GgsPromoSpesialSlide.css';
 
@@ -31,7 +32,8 @@ const phaseDelay = (index: number) => (index === 0 ? 0 : index * PHASE_SECONDS -
  * the owner's photo with a slow zoom, a spinning "up to 30%" badge and a
  * promo card that pushes through the four offers on a 16 s CSS timeline (`ggp-`).
  */
-export function GgsPromoSpesialSlide({ exportRef }: { exportRef?: RefObject<HTMLElement | null> }) {
+export function GgsPromoSpesialSlide({ exportRef, still = false }: { exportRef?: RefObject<HTMLElement | null>; still?: boolean }) {
+  if (still) return <GgsPromoSpesialStill exportRef={exportRef} />;
   return (
     <div
       ref={exportRef as RefObject<HTMLDivElement | null>}
@@ -117,6 +119,65 @@ export function GgsPromoSpesialSlide({ exportRef }: { exportRef?: RefObject<HTML
         </div>
       </section>
 
+      <img className="ggp-watermark" src={ggsWatermark.url} alt="" aria-hidden="true" draggable={false} />
+    </div>
+  );
+}
+
+
+/** GGS Feed slide 11 — static version of slide 10 with another photo; all four promos listed at once. */
+function GgsPromoSpesialStill({ exportRef }: { exportRef?: RefObject<HTMLElement | null> }) {
+  return (
+    <div
+      ref={exportRef as RefObject<HTMLDivElement | null>}
+      className="ggp-root ggp-root--still"
+      role="img"
+      aria-label="GGS Beauty Promo Spesial: Warna, Smoothing, Massage diskon up to 30%. Creambath all item diskon 15%. Nail art Rp35.000. Ratus Rp45.000."
+    >
+      <div className="ggp-scene" aria-hidden="true">
+        <img src={stillPhoto} alt="" draggable={false} />
+      </div>
+      <div className="ggp-shade" aria-hidden="true" />
+      <section className="ggp-head" aria-hidden="true">
+        <p className="ggp-kicker">
+          <span className="ggp-kicker-line" />
+          GGS Beauty · Salon &amp; Spa
+        </p>
+        <h2 className="ggp-title">
+          <span className="ggp-title-word">Promo</span> <em className="ggp-title-word ggp-title-word--2">Spesial</em>
+        </h2>
+      </section>
+      <div className="ggp-badge" aria-hidden="true">
+        <svg className="ggp-badge-ring" viewBox="0 0 200 200">
+          <defs>
+            <path id="ggp-ring-path-still" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0" />
+          </defs>
+          <text>
+            <textPath href="#ggp-ring-path-still" startOffset="0" textLength="486" lengthAdjust="spacing">
+              PROMO SPESIAL • GGS BEAUTY • PROMO SPESIAL • GGS BEAUTY •
+            </textPath>
+          </text>
+        </svg>
+        <div className="ggp-badge-core">
+          <span>up to</span>
+          <strong>30<small>%</small></strong>
+        </div>
+      </div>
+      <section className="ggp-card ggp-list" aria-hidden="true">
+        {GGS_SLIDE_10_PROMOS.map((promo, index) => (
+          <div key={promo.tag} className="ggp-item">
+            <p className="ggp-tag">
+              <span className="ggp-index">0{index + 1}</span>
+              <span className="ggp-item-name">{promo.tag}<small>{promo.lead.join(' ')}</small></span>
+            </p>
+            <p className="ggp-value">
+              {promo.unit === 'rupiah' && <small className="ggp-rp">Rp</small>}
+              {promo.value}
+              {promo.unit === 'percent' && <small className="ggp-pct">%</small>}
+            </p>
+          </div>
+        ))}
+      </section>
       <img className="ggp-watermark" src={ggsWatermark.url} alt="" aria-hidden="true" draggable={false} />
     </div>
   );

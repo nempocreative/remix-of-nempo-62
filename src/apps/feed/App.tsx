@@ -135,7 +135,7 @@ type FeedSlide =
   | 33
   | 34;
 
-type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 const cafes = [
   {
@@ -2655,6 +2655,10 @@ function ClientFeedArtwork({
     return <GgsPromoSpesialSlide exportRef={exportRef} />;
   }
 
+  if (!isStory && slide === 11) {
+    return <GgsPromoSpesialSlide exportRef={exportRef} still />;
+  }
+
   if (!isStory && slide === 7) {
     return <GgsRatusPromoSlide key={slide} exportRef={exportRef} subject="client" />;
   }
@@ -2777,7 +2781,7 @@ function App() {
             ? 1402
             : isGgsStory
               ? 1920
-              : activeFeed === 'nempo' || (isGgsFeed && (activeClientSlide === 8 || activeClientSlide === 9))
+              : activeFeed === 'nempo' || (isGgsFeed && (activeClientSlide === 8 || activeClientSlide === 9 || activeClientSlide === 11))
                 ? 1440
                 : 1350;
       const renderScale = isHighQualityNempoStorySlide
@@ -2996,7 +3000,7 @@ function App() {
       : isGgsFeed
       ? isGgsStory
         ? [1, 2, 3]
-        : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34];
   const selectedSlide =
     isGgsFeed ? activeClientSlide : activeSlide;
