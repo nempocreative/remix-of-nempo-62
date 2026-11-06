@@ -49,7 +49,7 @@ const nempoSpin = pick(nempoFrames, [
 const products: { name: string; frames?: Spin; bracelet?: boolean; lanyard?: boolean; notebook?: boolean; tumbler?: boolean; desc: string; features: string[] }[] = [
   {
     name: "Kaos Nempo × Kala Muda",
-    frames: pick(kaosFrames, [[0, 0], [1, 25], [2, 50], [3, 90], [4, 135], [5, 155], [6, 180], [7, 220], [8, 265], [9, 285], [10, 320], [11, 340]]),
+    frames: pick(kaosFrames, [[0, 0], [1, 25], [2, 50], [3, 90], [4, 135], [5, 155], [6, 180], [7, 225], [9, 270], [10, 315], [11, 340]]),
     desc: "Konsep kaos navy lengan pendek dengan identitas Nempo × Kala Muda dan aksen biru-ungu yang senada dengan koleksi komunitas.",
     features: ["Kerah bulat dengan potongan regular fit", "Logo Nempo dan Kala Muda di dada", "Wordmark Nempo besar dan Kala Muda di punggung", "Aksen biru-ungu di bahu dan ujung lengan"],
   },
