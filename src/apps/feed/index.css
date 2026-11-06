@@ -1893,7 +1893,7 @@
 .ddh-bats svg:nth-child(even) { width: 4cqw; }
 .ddh-flash { position: absolute; inset: 0; background: var(--ddh-ink); opacity: 0; animation-name: ddh-flash; }
 .ddh-presents { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2cqw; opacity: 0; animation-name: ddh-presents; }
-.ddh-presents img { width: 46cqw; filter: drop-shadow(0 0 2.5cqw color-mix(in oklab, var(--ddh-gold) 55%, transparent)); }
+.ddh-presents img { width: 46cqw; translate: -6cqw 0; filter: drop-shadow(0 0 2.5cqw color-mix(in oklab, var(--ddh-gold) 55%, transparent)); }
 .ddh-stack { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 3cqw; }
 .ddh-mark { position: relative; display: grid; justify-items: center; opacity: 0; will-change: transform, opacity;
   rotate: -5deg; animation-name: ddh-logo; }
