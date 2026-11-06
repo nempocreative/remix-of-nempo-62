@@ -18,6 +18,9 @@ const lapanganFrames = byName(
 const nempoFrames = byName(
   import.meta.glob<string>("/src/assets/rompi-spin-nempo-*.webp", { eager: true, import: "default" }),
 );
+const pdhFrames = byName(
+  import.meta.glob<string>("/src/assets/pdh-spin-*.webp", { eager: true, import: "default" }),
+);
 
 type Spin = { src: string; angle: number }[];
 const pick = (all: string[], list: [number, number][]): Spin =>
@@ -32,6 +35,12 @@ const nempoSpin = pick(nempoFrames, [
 ]);
 
 const products = [
+  {
+    name: "Kemeja PDH Nempo × Kala Muda",
+    frames: pick(pdhFrames, [[0, 0], [1, 20], [2, 60], [3, 90], [4, 145], [5, 160], [6, 180], [7, 205], [8, 235], [9, 270], [10, 310], [11, 335]]),
+    desc: "Konsep kemeja PDH navy lengan pendek untuk tim Nempo × Kala Muda, dengan aksen biru-ungu di bahu dan ujung lengan. Rapi untuk kegiatan komunitas maupun acara resmi.",
+    features: ["Kerah runcing dan epolet bahu", "Dua saku dada dengan penutup", "Bordir Nempo dan Kala Muda di dada", "Identitas Nempo × Kala Muda di punggung"],
+  },
   {
     name: "Rompi Lapangan Nempo",
     frames: lapanganSpin,
