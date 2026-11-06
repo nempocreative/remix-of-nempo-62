@@ -62,6 +62,7 @@ const products: { name: string; frames?: Spin; bracelet?: boolean; lanyard?: boo
   {
     name: "Rompi Lapangan Nempo",
     frames: lapanganSpin,
+    frames: lapanganSpin,
     desc: "Rompi crew lapangan dengan webbing modular di depan, aksen gradasi biru-ungu Kala Muda dan strip reflektif. Semua alat penting di lapangan punya tempatnya sendiri.",
     features: [
       "Holster HT di dada + kantong HP",
