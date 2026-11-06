@@ -128,8 +128,8 @@ export function LanyardSpinner() {
       strapGeo.setAttribute("position", new T.Float32BufferAttribute(pos, 3));
       strapGeo.setAttribute("uv", new T.Float32BufferAttribute(uv, 2));
       strapGeo.setIndex(idx); strapGeo.computeVertexNormals();
-      const strapFront = new T.MeshStandardMaterial({ map: strapTex, roughness: 0.78, side: T.FrontSide });
-      const strapBack = new T.MeshStandardMaterial({ map: strapTexBack, roughness: 0.78, side: T.BackSide });
+      const strapFront = new T.MeshStandardMaterial({ map: strapTexBack, roughness: 0.78, side: T.FrontSide });
+      const strapBack = new T.MeshStandardMaterial({ map: strapTex, roughness: 0.78, side: T.BackSide });
 
       const lanyard = new T.Group();
       lanyard.add(new T.Mesh(strapGeo, strapFront), new T.Mesh(strapGeo, strapBack));
