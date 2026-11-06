@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Kaos Nempo × Kala Muda: desain senada, tampilan berbagai sudut dan tombol play/jeda; periksa komputer dan ponsel.
+- [x] Kaos Nempo × Kala Muda: 12 foto transparan sejajar, tombol play/jeda dan putaran diuji; tampil di komputer/ponsel tanpa error, empat tes spinner lolos.
 
 - [x] Lanjutkan PDH: 12 foto kemeja navy dibuat ulang, latar dihapus, ditambahkan ke Merchandise; putaran, jeda, semua foto dan tampilan ponsel terverifikasi.
 
