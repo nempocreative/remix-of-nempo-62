@@ -6,7 +6,7 @@
 .ggo-root * { letter-spacing: 0; }
 .ggo-root p, .ggo-root h2 { margin: 0; }
 .ggo-scene, .ggo-shade, .ggo-watermark { position: absolute; inset: 0; width: 100%; height: 100%; }
-.ggo-scene { object-fit: cover; object-position: center 48%; }
+.ggo-scene { top: 30cqw; height: 90cqw; object-fit: cover; object-position: center 44%; }
 .ggo-shade { z-index: 1; background: var(--ggo-shade); pointer-events: none; }
 .ggo-watermark { z-index: 5; object-fit: contain; pointer-events: none; }
 .ggo-heading { position: absolute; z-index: 2; top: 18cqw; left: 7cqw; right: 7cqw; text-align: center; }
