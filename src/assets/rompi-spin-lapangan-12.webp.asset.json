@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "ac8fd275-ce97-4437-a1ed-317ad1fc608e",
-  "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "url": "/__l5e/assets-v1/ac8fd275-ce97-4437-a1ed-317ad1fc608e/rompi-spin-lapangan-12.webp",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/ac8fd275-ce97-4437-a1ed-317ad1fc608e/rompi-spin-lapangan-12.webp",
-  "original_filename": "rompi-spin-lapangan-12.webp",
-  "size": 44736,
   "content_type": "image/webp",
-  "created_at": "2026-11-06T15:09:40Z"
+  "created_at": "2026-11-06T15:09:40Z",
+  "original_filename": "rompi-spin-lapangan-12.webp",
+  "project_id": "f79b7188-cb46-4991-80ec-442558d364c0",
+  "r2_key": "a/v1/f79b7188-cb46-4991-80ec-442558d364c0/ac8fd275-ce97-4437-a1ed-317ad1fc608e/rompi-spin-lapangan-12.webp",
+  "size": 44736,
+  "url": "/__l5e/assets-v1/ac8fd275-ce97-4437-a1ed-317ad1fc608e/rompi-spin-lapangan-12.webp",
+  "version": 1
 }
