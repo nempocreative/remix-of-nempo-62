@@ -4,6 +4,7 @@ import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 import { setResponseHeader } from "@tanstack/react-start/server";
 import { SECURITY_HEADERS } from "@/lib/security-policy";
+import { shouldBlock } from "@/lib/hosting-lock";
 
 const securityMiddleware = createMiddleware().server(async ({ next }) => {
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
@@ -16,6 +17,15 @@ const securityMiddleware = createMiddleware().server(async ({ next }) => {
     return new Response(result.body, { status: result.status, statusText: result.statusText, headers });
   }
   return result;
+});
+
+const hostingLockMiddleware = createMiddleware().server(async ({ next, request }) => {
+  const url = new URL(request.url);
+  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? url.host;
+  if (shouldBlock(host, url.pathname)) {
+    return new Response("Not Found", { status: 404, headers: { "content-type": "text/plain" } }) as never;
+  }
+  return next();
 });
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
@@ -42,5 +52,5 @@ const csrfMiddleware = createCsrfMiddleware({
 
 export const startInstance = createStart(() => ({
   functionMiddleware: [attachSupabaseAuth],
-  requestMiddleware: [securityMiddleware, errorMiddleware, csrfMiddleware],
+  requestMiddleware: [hostingLockMiddleware, securityMiddleware, errorMiddleware, csrfMiddleware],
 }));
