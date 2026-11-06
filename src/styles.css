@@ -13,6 +13,16 @@
   --bracelet-violet: #8452e5;
 }
 .bracelet-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
+.lanyard-display {
+  position: relative;
+  --lanyard-band: #101d37;
+  --lanyard-deep: #0a1228;
+  --lanyard-letter: #ffffff;
+  --lanyard-blue: #2695f2;
+  --lanyard-violet: #8452e5;
+  --lanyard-metal: #c9ced8;
+}
+.lanyard-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
 
 /* MusiComedy opening film: palette scoped to the feed's bumper. */
 .mc-bumper-tool, .mc-bumper-tab {
