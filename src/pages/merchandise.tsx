@@ -255,7 +255,7 @@ export default function MerchandisePage() {
         <article key={p.name} className="mt-8 overflow-hidden rounded-3xl border border-[#dce4fb] bg-white shadow-sm md:grid md:grid-cols-[1fr_1fr] md:items-stretch">
           {p.tumbler ? <TumblerSpinner /> : p.notebook ? <NotebookSpinner /> : p.lanyard ? <LanyardSpinner /> : p.bracelet ? <BraceletSpinner /> : p.frames ? <VestSpinner frames={p.frames} name={p.name} /> : null}
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-8">
-            <span className="w-fit rounded-full bg-[#182b39] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Segera hadir</span>
+            <span className="w-fit rounded-full bg-[#182b39] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Tersedia</span>
             <h2 className="text-2xl font-black text-[#182b39]">{p.name}</h2>
             <p className="text-sm leading-6 text-[#5f6b6f]">{p.desc}</p>
             <ul className="space-y-1.5 text-sm text-[#182b39]">
