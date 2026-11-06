@@ -40,22 +40,31 @@ export function BraceletSpinner() {
       ctx.fillStyle = navy; ctx.fillRect(0, 0, 4096, 256);
       const stripe = ctx.createLinearGradient(0, 0, 4096, 0);
       stripe.addColorStop(0, blue); stripe.addColorStop(.5, violet); stripe.addColorStop(1, blue);
-      ctx.fillStyle = stripe; ctx.fillRect(0, 12, 4096, 10);
+      ctx.fillStyle = stripe; ctx.fillRect(0, 14, 4096, 12); ctx.fillRect(0, 230, 4096, 12);
       ctx.fillStyle = ink; ctx.font = "bold 112px Arial"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
       ctx.fillText("nempo", 1024, 142); ctx.fillText("KALA MUDA", 3072, 142);
       const texture = new T.CanvasTexture(canvas); texture.colorSpace = T.SRGBColorSpace;
       texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      const outer = new T.MeshStandardMaterial({ map: texture, roughness: .6 });
+      const reliefCanvas = document.createElement("canvas");
+      reliefCanvas.width = 4096; reliefCanvas.height = 256;
+      const reliefCtx = reliefCanvas.getContext("2d");
+      if (reliefCtx) {
+        reliefCtx.fillStyle = "#000000"; reliefCtx.fillRect(0, 0, 4096, 256);
+        reliefCtx.fillStyle = "#ffffff"; reliefCtx.font = ctx.font; reliefCtx.textAlign = "center"; reliefCtx.textBaseline = "middle";
+        reliefCtx.fillText("nempo", 1024, 142); reliefCtx.fillText("KALA MUDA", 3072, 142);
+      }
+      const relief = new T.CanvasTexture(reliefCanvas);
+      const outer = new T.MeshStandardMaterial({ map: texture, bumpMap: relief, bumpScale: .018, roughness: .48 });
       const inner = new T.MeshStandardMaterial({ color: navy, roughness: .7, side: T.BackSide });
       const rim = new T.MeshStandardMaterial({ color: navy, roughness: .6, side: T.DoubleSide });
       const band = new T.Group();
-      band.add(new T.Mesh(new T.CylinderGeometry(2, 2, .85, 160, 1, true), outer));
-      band.add(new T.Mesh(new T.CylinderGeometry(1.88, 1.88, .85, 160, 1, true), inner));
+      band.add(new T.Mesh(new T.CylinderGeometry(2, 2, .55, 160, 1, true), outer));
+      band.add(new T.Mesh(new T.CylinderGeometry(1.9, 1.9, .55, 160, 1, true), inner));
       for (const sign of [-1, 1]) {
         const profile = [];
         for (let j = 0; j <= 16; j++) {
           const a = Math.PI * j / 16;
-          profile.push(new T.Vector2(1.94 + .06 * Math.cos(a), sign * (.425 + .025 * Math.sin(a))));
+          profile.push(new T.Vector2(1.95 + .05 * Math.cos(a), sign * (.275 + .045 * Math.sin(a))));
         }
         band.add(new T.Mesh(new T.LatheGeometry(profile, 160), rim));
       }
@@ -82,7 +91,7 @@ export function BraceletSpinner() {
         cancelAnimationFrame(raf); ro.disconnect();
         el.removeEventListener("pointerdown", down); el.removeEventListener("pointermove", move); el.removeEventListener("pointerup", up); el.removeEventListener("pointercancel", up);
         band.children.forEach((child) => { if (child instanceof T.Mesh) child.geometry.dispose(); });
-        texture.dispose(); outer.dispose(); inner.dispose(); rim.dispose(); renderer.dispose(); renderer.domElement.remove();
+        texture.dispose(); relief.dispose(); outer.dispose(); inner.dispose(); rim.dispose(); renderer.dispose(); renderer.domElement.remove();
       };
     }).catch(() => {});
     return () => { disposed = true; cleanup(); };
