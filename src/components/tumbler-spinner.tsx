@@ -58,8 +58,8 @@ export function TumblerSpinner() {
       scene.environment = envTex;
       scene.environmentIntensity = 0.6;
       const camera = new T.PerspectiveCamera(30, 3 / 4, 0.1, 100);
-      camera.position.set(0, 2.5, 7.1);
-      camera.lookAt(0, 1.42, 0);
+      camera.position.set(0, 2.6, 7.6);
+      camera.lookAt(0, 1.5, 0);
       const key = new T.DirectionalLight(ink, 2.0);
       key.position.set(3, 5, 6); scene.add(key);
       const rimLight = new T.DirectionalLight(violet, 1.1);
@@ -113,7 +113,7 @@ export function TumblerSpinner() {
         for (const off of [-TW, 0, TW]) wc.drawImage(img, cx + off - w / 2, y, w, h);
       };
       if (nempo) {
-        const lw = TW * 0.2, lh = lw * (nempo.height / nempo.width);
+        const lw = TW * 0.26, lh = lw * (nempo.height / nempo.width);
         drawWrapped(nempo, 0, TH * 0.16, lw, lh);
       }
       wc.textAlign = "center"; wc.textBaseline = "middle"; wc.fillStyle = ink;
