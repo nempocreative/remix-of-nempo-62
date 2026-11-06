@@ -39,8 +39,8 @@ const products = [
   },
 ];
 
-// 24 sudut × 0,25 detik = satu putaran penuh dalam 6 detik.
-const SECONDS_PER_ANGLE = 0.25;
+// 24 sudut × 0,15 detik = satu putaran penuh dalam 3,6 detik.
+const SECONDS_PER_ANGLE = 0.15;
 // Kemiringan foto (derajat) di antara dua sudut foto yang berjarak 15°.
 const SWING = 5;
 // Geser 18 px = satu sudut (±430 px untuk satu putaran penuh).
