@@ -5,6 +5,7 @@ import slide34VideoAsset from '@/assets/nempo-feed-slide-34.mp4.asset.json';
 import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4.asset.json';
 import ggsRatusBenefitPng from '@/assets/ggs-feed-08-ratus-manfaat.png';
 import ggsNailPahlawanPng from '@/assets/ggs-feed-09-nail-pahlawan.png';
+import ggsPromoSpesialVideo from '@/assets/ggs-feed-10-promo-spesial.mp4';
 import { PrebuiltPngDownload } from './components/PrebuiltPngDownload';
 import {
   FaFileExcel,
@@ -89,6 +90,7 @@ import { GgsMemberCardDesigner } from './components/GgsMemberCardDesigner';
 import { Ggs2027Calendar } from './components/Ggs2027Calendar';
 import { GgsRatusBenefitSlide } from './components/GgsRatusBenefitSlide';
 import { GgsNailPahlawanSlide } from './components/GgsNailPahlawanSlide';
+import { GgsPromoSpesialSlide } from './components/GgsPromoSpesialSlide';
 import { GgsRatusPromoSlide } from './components/GgsRatusPromoSlide';
 
 const SpreadsheetViewer = lazy(async () => {
@@ -133,7 +135,7 @@ type FeedSlide =
   | 33
   | 34;
 
-type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 const cafes = [
   {
@@ -2649,6 +2651,10 @@ function ClientFeedArtwork({
     return <GgsNailPahlawanSlide exportRef={exportRef} />;
   }
 
+  if (!isStory && slide === 10) {
+    return <GgsPromoSpesialSlide exportRef={exportRef} />;
+  }
+
   if (!isStory && slide === 7) {
     return <GgsRatusPromoSlide key={slide} exportRef={exportRef} subject="client" />;
   }
@@ -2990,7 +2996,7 @@ function App() {
       : isGgsFeed
       ? isGgsStory
         ? [1, 2, 3]
-        : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34];
   const selectedSlide =
     isGgsFeed ? activeClientSlide : activeSlide;
@@ -3157,7 +3163,21 @@ function App() {
         </div>
         {!isCoupon && !isQCard && !isSpreadsheet && !isRundown && !isBumper && (
           <div className="mb-3 flex flex-col items-center gap-2">
-            {isGgsRatusVideoSlide ? (
+            {activeFeed === 'client' && activeClientSlide === 10 ? (
+              <>
+                <a
+                  href={ggsPromoSpesialVideo}
+                  download="GGS-Feed-10-Promo-Spesial.mp4"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
+                >
+                  <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                  Download video · MP4
+                </a>
+                <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
+                  Video 16 detik · 1080×1440 · 30 fps, persis seperti pratinjau.
+                </p>
+              </>
+            ) : isGgsRatusVideoSlide ? (
               <>
                 <a
                   href={ggsRatusVideo.url}
