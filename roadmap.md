@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Lanjutkan PDH: 12 foto kemeja navy dibuat ulang, latar dihapus, ditambahkan ke Merchandise; putaran, jeda, semua foto dan tampilan ponsel terverifikasi.
+
 - [x] GGS slide 7: pinggiran putih dihapus lewat capture artboard tepat 1080×1440 pada koordinat integer, lima pergantian teks sepanjang 20 detik; MP4 600 frame 30 fps H.264 High CRF 16 slow (8,6 MB) direkam ulang, decode dan checksum unduhan cocok; desktop/ponsel tanpa error, slide 8 tetap 15 detik. Tes durasi lolos; tes kelengkapan masih gagal pada 85 pointer asing lama, bukan video slide 7 baru.
 
 - [x] GGS slide 7: MP4 kualitas tinggi dari frame asli 1080×1440, 30 fps, 15 detik; H.264 CRF 16, 5,9 MB; decode dan tombol unduh terverifikasi cocok dengan file baru. Tes kelengkapan: 5 lolos, 1 gagal karena pointer asing lama yang tidak terkait perubahan ini.
