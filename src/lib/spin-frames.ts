@@ -1,34 +1,25 @@
 // Pure math for the 360° photo spinner on the merchandise page.
-// `pos` counts frames (1.0 = one photo angle further). Between two angles the
-// current photo tilts from +swing to -swing; during the last part of the step the
-// next photo fades in on top, tilted exactly 2×swing ahead (its own angle), so the
-// two layers line up and no double image or flicker shows.
+// The vest photos are not evenly spaced, so every kept photo carries its real
+// viewing angle (degrees, 0 = front, increasing in turn direction). The spinner
+// advances a continuous angle at constant speed and shows the photo whose angle
+// was reached last; while it is shown the photo tilts slightly in the turn
+// direction, then the next photo takes over. Only one photo is ever visible.
 
 export type SpinState = {
-  /** Index of the photo underneath (fully opaque). */
-  a: number;
-  /** Index of the next photo fading in on top. */
-  b: number;
-  rotA: number;
-  rotB: number;
-  /** Opacity of photo `b` (0…1). */
-  fade: number;
+  /** Position in the angle list of the photo to show. */
+  i: number;
+  /** Tilt of that photo in degrees (CSS rotateY). */
+  rot: number;
 };
 
-// 0 = no blending: only one photo is ever visible, so no double image.
-export const FADE_PORTION = 0;
-
-export function spinState(pos: number, n: number, swing: number): SpinState {
-  const p = ((pos % n) + n) % n;
-  const a = Math.floor(p) % n;
-  const f = p - Math.floor(p);
-  const t = FADE_PORTION > 0 ? Math.max(0, (f - (1 - FADE_PORTION)) / FADE_PORTION) : 0;
-  const fade = t * t * (3 - 2 * t);
-  return {
-    a,
-    b: (a + 1) % n,
-    rotA: swing * (1 - 2 * f),
-    rotB: swing * (3 - 2 * f),
-    fade,
-  };
+export function spinState(deg: number, angles: number[], maxSwing: number): SpinState {
+  const d = ((deg % 360) + 360) % 360;
+  let i = 0;
+  for (let k = 0; k < angles.length; k++) if ((angles[k] as number) <= d) i = k;
+  const from = angles[i] as number;
+  const to = i + 1 < angles.length ? (angles[i + 1] as number) : 360 + (angles[0] as number);
+  const gap = Math.max(1e-6, to - from);
+  const f = Math.min(1, Math.max(0, (d - from) / gap));
+  const amp = Math.min(maxSwing, gap * 0.25);
+  return { i, rot: amp * (1 - 2 * f) };
 }
