@@ -1,25 +1,29 @@
 import { describe, expect, it } from "vitest";
 import { spinState } from "./spin-frames";
 
-describe("merchandise 360° spinner", () => {
-  it("never shows two photos at once (no double image)", () => {
-    const end = spinState(4.9999, 24, 5);
-    const next = spinState(5, 24, 5);
-    expect(end.b).toBe(5);
-    expect(next.a).toBe(5);
-    expect(end.fade).toBe(0);
-    expect(end.rotA).toBeCloseTo(-5, 2);
-    expect(next.rotA).toBeCloseTo(5, 2);
-  });
+const angles = [0, 22, 33, 90, 180, 300];
 
-  it("shows only one photo in the first part of each step", () => {
-    expect(spinState(3.3, 24, 5).fade).toBe(0);
+describe("merchandise 360° spinner", () => {
+  it("shows the photo whose real angle was reached last", () => {
+    expect(spinState(21.9, angles, 6).i).toBe(0);
+    expect(spinState(22, angles, 6).i).toBe(1);
+    expect(spinState(179, angles, 6).i).toBe(3);
   });
 
   it("wraps from the last angle back to the front", () => {
-    const s = spinState(23.8, 24, 5);
-    expect(s.a).toBe(23);
-    expect(s.b).toBe(0);
-    expect(spinState(-0.5, 24, 5).a).toBe(23);
+    expect(spinState(359, angles, 6).i).toBe(5);
+    expect(spinState(360, angles, 6).i).toBe(0);
+    expect(spinState(-1, angles, 6).i).toBe(5);
+  });
+
+  it("tilts in the turn direction and never more than the limit", () => {
+    const start = spinState(90, angles, 6);
+    const end = spinState(179.99, angles, 6);
+    expect(start.rot).toBeCloseTo(6, 2);
+    expect(end.rot).toBeCloseTo(-6, 1);
+  });
+
+  it("keeps the tilt small across a small angle gap", () => {
+    expect(spinState(22, angles, 6).rot).toBeCloseTo(11 * 0.25, 2);
   });
 });
