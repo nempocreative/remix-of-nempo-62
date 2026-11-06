@@ -15,7 +15,7 @@ export type SpinState = {
   fade: number;
 };
 
-export const FADE_PORTION = 0.4;
+export const FADE_PORTION = 0.25;
 
 export function spinState(pos: number, n: number, swing: number): SpinState {
   const p = ((pos % n) + n) % n;
