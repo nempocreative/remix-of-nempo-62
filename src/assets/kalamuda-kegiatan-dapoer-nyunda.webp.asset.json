@@ -1,11 +1,11 @@
 {
-  "asset_id": "642d32ce-2df0-4bac-86a2-e3b26c1ac0e6",
-  "content_type": "image/webp",
-  "created_at": "2026-11-06T12:13:41Z",
-  "original_filename": "kalamuda-kegiatan-dapoer-nyunda.webp",
+  "version": 1,
+  "asset_id": "a1f01dad-b651-4e93-a5ba-6b95289bb962",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/642d32ce-2df0-4bac-86a2-e3b26c1ac0e6/kalamuda-kegiatan-dapoer-nyunda.webp",
+  "url": "/__l5e/assets-v1/a1f01dad-b651-4e93-a5ba-6b95289bb962/kalamuda-kegiatan-dapoer-nyunda.webp",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/a1f01dad-b651-4e93-a5ba-6b95289bb962/kalamuda-kegiatan-dapoer-nyunda.webp",
+  "original_filename": "kalamuda-kegiatan-dapoer-nyunda.webp",
   "size": 89074,
-  "url": "/__l5e/assets-v1/642d32ce-2df0-4bac-86a2-e3b26c1ac0e6/kalamuda-kegiatan-dapoer-nyunda.webp",
-  "version": 1
+  "content_type": "image/webp",
+  "created_at": "2026-11-06T13:00:37Z"
 }

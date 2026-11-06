@@ -1,11 +1,11 @@
 {
-  "asset_id": "2d745f0f-bd84-4b68-9119-5b2aa014b4d0",
-  "content_type": "image/webp",
-  "created_at": "2026-11-06T12:16:03Z",
-  "original_filename": "rompi-putar-nempo-1.webp",
+  "version": 1,
+  "asset_id": "ef02f120-01cd-483c-a764-e3084315ecec",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/2d745f0f-bd84-4b68-9119-5b2aa014b4d0/rompi-putar-nempo-1.webp",
+  "url": "/__l5e/assets-v1/ef02f120-01cd-483c-a764-e3084315ecec/rompi-putar-nempo-1.webp",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/ef02f120-01cd-483c-a764-e3084315ecec/rompi-putar-nempo-1.webp",
+  "original_filename": "rompi-putar-nempo-1.webp",
   "size": 46754,
-  "url": "/__l5e/assets-v1/2d745f0f-bd84-4b68-9119-5b2aa014b4d0/rompi-putar-nempo-1.webp",
-  "version": 1
+  "content_type": "image/webp",
+  "created_at": "2026-11-06T13:03:21Z"
 }

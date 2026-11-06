@@ -1,11 +1,11 @@
 {
-  "asset_id": "69bf0d61-c6ea-4dbc-817e-daaf62836fd9",
-  "content_type": "image/png",
-  "created_at": "2026-11-06T12:13:33Z",
-  "original_filename": "kala-muda-logo.png",
+  "version": 1,
+  "asset_id": "62c62bdb-c543-406c-b374-e09cae1bf0b2",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/69bf0d61-c6ea-4dbc-817e-daaf62836fd9/kala-muda-logo.png",
+  "url": "/__l5e/assets-v1/62c62bdb-c543-406c-b374-e09cae1bf0b2/kala-muda-logo.png",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/62c62bdb-c543-406c-b374-e09cae1bf0b2/kala-muda-logo.png",
+  "original_filename": "kala-muda-logo.png",
   "size": 15284,
-  "url": "/__l5e/assets-v1/69bf0d61-c6ea-4dbc-817e-daaf62836fd9/kala-muda-logo.png",
-  "version": 1
+  "content_type": "image/png",
+  "created_at": "2026-11-06T13:00:28Z"
 }

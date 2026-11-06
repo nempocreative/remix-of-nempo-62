@@ -1,11 +1,11 @@
 {
-  "asset_id": "163a73c0-2c82-41ac-811c-af2d4689fba4",
-  "content_type": "image/png",
-  "created_at": "2026-11-06T12:16:31Z",
-  "original_filename": "saduli-ragap-logo.png",
+  "version": 1,
+  "asset_id": "b5501d4d-0195-426a-b73f-01ee3cb03569",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/163a73c0-2c82-41ac-811c-af2d4689fba4/saduli-ragap-logo.png",
+  "url": "/__l5e/assets-v1/b5501d4d-0195-426a-b73f-01ee3cb03569/saduli-ragap-logo.png",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/b5501d4d-0195-426a-b73f-01ee3cb03569/saduli-ragap-logo.png",
+  "original_filename": "saduli-ragap-logo.png",
   "size": 861932,
-  "url": "/__l5e/assets-v1/163a73c0-2c82-41ac-811c-af2d4689fba4/saduli-ragap-logo.png",
-  "version": 1
+  "content_type": "image/png",
+  "created_at": "2026-11-06T13:04:00Z"
 }

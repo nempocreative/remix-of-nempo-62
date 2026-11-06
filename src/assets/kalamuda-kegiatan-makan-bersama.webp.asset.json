@@ -1,11 +1,11 @@
 {
-  "asset_id": "d82b5975-5c14-452f-ada8-4a7dddc5064a",
-  "content_type": "image/webp",
-  "created_at": "2026-11-06T12:13:44Z",
-  "original_filename": "kalamuda-kegiatan-makan-bersama.webp",
+  "version": 1,
+  "asset_id": "2be40a40-4096-48e3-b9ed-415c9b35a87f",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/d82b5975-5c14-452f-ada8-4a7dddc5064a/kalamuda-kegiatan-makan-bersama.webp",
+  "url": "/__l5e/assets-v1/2be40a40-4096-48e3-b9ed-415c9b35a87f/kalamuda-kegiatan-makan-bersama.webp",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/2be40a40-4096-48e3-b9ed-415c9b35a87f/kalamuda-kegiatan-makan-bersama.webp",
+  "original_filename": "kalamuda-kegiatan-makan-bersama.webp",
   "size": 109200,
-  "url": "/__l5e/assets-v1/d82b5975-5c14-452f-ada8-4a7dddc5064a/kalamuda-kegiatan-makan-bersama.webp",
-  "version": 1
+  "content_type": "image/webp",
+  "created_at": "2026-11-06T13:00:42Z"
 }

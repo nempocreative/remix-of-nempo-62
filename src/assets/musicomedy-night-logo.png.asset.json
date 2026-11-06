@@ -1,11 +1,11 @@
 {
-  "asset_id": "465ab410-83ef-4d15-a2a7-ba1ba6fe854e",
-  "content_type": "image/webp",
-  "created_at": "2026-11-06T12:14:18Z",
-  "original_filename": "musicomedy-night-logo.png",
+  "version": 1,
+  "asset_id": "6d246c94-41b7-45f2-bf7f-810f9d6efffa",
   "project_id": "173aef71-bfdc-47e6-8396-50ff1930283d",
-  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/465ab410-83ef-4d15-a2a7-ba1ba6fe854e/musicomedy-night-logo.png",
+  "url": "/__l5e/assets-v1/6d246c94-41b7-45f2-bf7f-810f9d6efffa/musicomedy-night-logo.png",
+  "r2_key": "a/v1/173aef71-bfdc-47e6-8396-50ff1930283d/6d246c94-41b7-45f2-bf7f-810f9d6efffa/musicomedy-night-logo.png",
+  "original_filename": "musicomedy-night-logo.png",
   "size": 192516,
-  "url": "/__l5e/assets-v1/465ab410-83ef-4d15-a2a7-ba1ba6fe854e/musicomedy-night-logo.png",
-  "version": 1
+  "content_type": "image/webp",
+  "created_at": "2026-11-06T13:01:22Z"
 }
