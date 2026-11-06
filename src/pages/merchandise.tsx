@@ -3,6 +3,8 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { Link } from "@/lib/wouter";
 import { BraceletSpinner } from "@/components/bracelet-spinner";
+import { Button } from "@/components/ui/button";
+import { Pause, Play } from "lucide-react";
 
 import { spinState } from "@/lib/spin-frames";
 
@@ -138,7 +140,8 @@ function VestSpinner({ frames, name }: { frames: Spin; name: string }) {
   return (
     <div className="merch-scene relative flex flex-col items-center overflow-hidden px-6 pb-6 pt-10">
       <span aria-hidden className="merch-glow" />
-      <button
+      <Button
+        variant="ghost"
         type="button"
         className="merch-stage"
         aria-label={paused ? `Putar lagi ${name}` : `Hentikan putaran ${name}`}
@@ -179,10 +182,17 @@ function VestSpinner({ frames, name }: { frames: Spin; name: string }) {
           ))}
         </div>
         <span aria-hidden className="merch-shadow" />
-      </button>
-      <p className="relative mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#c7cdf5]">
-        360° · {paused ? "Ketuk untuk memutar" : "Ketuk untuk berhenti"} · Geser untuk memutar
-      </p>
+      </Button>
+      <Button
+        variant="outline"
+        size="icon"
+        className="merch-play bg-card text-foreground"
+        aria-label={paused ? `Putar ${name}` : `Jeda putaran ${name}`}
+        title={paused ? `Putar ${name}` : `Jeda putaran ${name}`}
+        onClick={() => setPaused((v) => !v)}
+      >
+        {paused ? <Play /> : <Pause />}
+      </Button>
     </div>
   );
 }
@@ -225,7 +235,8 @@ export default function MerchandisePage() {
         ))}
       </section>
       <style>{`
-        .merch-scene { background: radial-gradient(120% 90% at 50% 20%, #2b2f8f 0%, #1a1c55 45%, #0f1030 100%); align-self: stretch; justify-content: center; }
+        .merch-scene { position: relative; background: radial-gradient(120% 90% at 50% 20%, #2b2f8f 0%, #1a1c55 45%, #0f1030 100%); align-self: stretch; justify-content: center; }
+        .merch-play { position: absolute; right: 20px; bottom: 20px; z-index: 2; }
         .merch-glow { position: absolute; top: 18%; left: 50%; width: 70%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(110,75,180,.55), rgba(37,99,235,.25) 45%, transparent 70%); filter: blur(10px); }
         .merch-stage { width: min(70vw, 300px); aspect-ratio: 3 / 4; position: relative; cursor: grab; background: none; border: 0; padding: 0; touch-action: pan-y; user-select: none; }
         .merch-stage:active { cursor: grabbing; }
