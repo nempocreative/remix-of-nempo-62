@@ -21,6 +21,7 @@
   --lanyard-blue: #2695f2;
   --lanyard-violet: #8452e5;
   --lanyard-metal: #c9ced8;
+  --lanyard-paper: #f7f8fc;
 }
 .lanyard-display > button { position: absolute; inset: auto 20px 20px auto; z-index: 2; }
 

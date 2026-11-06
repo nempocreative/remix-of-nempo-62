@@ -47,6 +47,7 @@ export function LanyardSpinner() {
       const blue = css.getPropertyValue("--lanyard-blue").trim();
       const violet = css.getPropertyValue("--lanyard-violet").trim();
       const metal = css.getPropertyValue("--lanyard-metal").trim();
+      const paper = css.getPropertyValue("--lanyard-paper").trim();
 
       let renderer: InstanceType<typeof T.WebGLRenderer>;
       try { renderer = new T.WebGLRenderer({ antialias: true, alpha: true }); } catch { return; }
@@ -162,57 +163,62 @@ export function LanyardSpinner() {
       const fc = front.getContext("2d"), bc = back.getContext("2d");
       if (fc && bc) {
         const W = front.width, H = front.height;
-        for (const c of [fc, bc]) {
-          roundRect(c, 0, 0, W, H, 40); c.save(); c.clip();
-          const bg = c.createLinearGradient(0, 0, W * 0.4, H);
-          bg.addColorStop(0, navy); bg.addColorStop(1, deep);
-          c.fillStyle = bg; c.fillRect(0, 0, W, H);
-          const glow = c.createRadialGradient(W * 0.85, H * 0.12, 10, W * 0.85, H * 0.12, W * 0.9);
-          glow.addColorStop(0, violet); glow.addColorStop(1, "transparent");
-          c.globalAlpha = 0.45; c.fillStyle = glow; c.fillRect(0, 0, W, H); c.globalAlpha = 1;
-          // Blue-violet wave across the lower part, echoing the strap edges.
-          const wave = c.createLinearGradient(0, 0, W, 0);
-          wave.addColorStop(0, blue); wave.addColorStop(1, violet);
-          c.fillStyle = wave;
-          c.beginPath(); c.moveTo(0, H * 0.8); c.bezierCurveTo(W * 0.35, H * 0.72, W * 0.65, H * 0.9, W, H * 0.78);
-          c.lineTo(W, H); c.lineTo(0, H); c.closePath(); c.fill();
-          c.restore();
-          // Holder slot, punched through the top.
+        const grad = (c: CanvasRenderingContext2D) => {
+          const g = c.createLinearGradient(0, 0, W, H * 0.6);
+          g.addColorStop(0, blue); g.addColorStop(1, violet); return g;
+        };
+        const emblem = (c: CanvasRenderingContext2D, x: number, y: number, dw: number, alpha: number) => {
+          if (!nempo) return;
+          const sx = nempo.width * 0.326, sy = nempo.height * 0.081, sw = nempo.width * 0.337, sh = nempo.height * 0.554;
+          c.globalAlpha = alpha; c.drawImage(nempo, sx, sy, sw, sh, x, y, dw, dw * (sh / sw)); c.globalAlpha = 1;
+        };
+        const tinted = (img: HTMLImageElement, color: string) => {
+          const o = document.createElement("canvas"); o.width = img.width; o.height = img.height;
+          const oc = o.getContext("2d"); if (!oc) return img;
+          oc.drawImage(img, 0, 0); oc.globalCompositeOperation = "source-in";
+          oc.fillStyle = color; oc.fillRect(0, 0, o.width, o.height); return o;
+        };
+        const punchSlot = (c: CanvasRenderingContext2D) => {
           c.globalCompositeOperation = "destination-out";
-          roundRect(c, W / 2 - 90, 34, 180, 30, 15); c.fill();
+          roundRect(c, W / 2 - 80, 36, 160, 28, 14); c.fill();
           c.globalCompositeOperation = "source-over";
+        };
+
+        // Front: gradient header with the full Nempo logo, clean paper body with the role.
+        roundRect(fc, 0, 0, W, H, 36); fc.save(); fc.clip();
+        fc.fillStyle = paper; fc.fillRect(0, 0, W, H);
+        fc.fillStyle = grad(fc);
+        fc.beginPath(); fc.moveTo(0, 0); fc.lineTo(W, 0); fc.lineTo(W, H * 0.5); fc.lineTo(0, H * 0.57); fc.closePath(); fc.fill();
+        emblem(fc, W * 0.42, H * 0.06, W * 0.78, 0.12);
+        if (nempo) {
+          const lw = W * 0.64, lh = lw * (nempo.height / nempo.width);
+          fc.drawImage(nempo, (W - lw) / 2, 112, lw, lh);
         }
-        // Front: logos, member pass.
         fc.textAlign = "center"; fc.textBaseline = "middle";
-        if (nempo) {
-          const lw = W * 0.56, lh = lw * (nempo.height / nempo.width);
-          fc.drawImage(nempo, (W - lw) / 2, 120, lw, lh);
-        }
-        fc.fillStyle = ink; fc.globalAlpha = 0.7; fc.font = "bold 46px Arial";
-        fc.fillText("×", W / 2, 520); fc.globalAlpha = 1;
+        fc.fillStyle = navy; fc.font = "900 128px Arial";
+        fc.letterSpacing = "10px"; fc.fillText("CREW", W / 2 + 5, H * 0.68); fc.letterSpacing = "0px";
+        fc.fillStyle = violet; fc.font = "bold 26px Arial";
+        fc.letterSpacing = "6px"; fc.fillText("NEMPO × KALA MUDA", W / 2 + 3, H * 0.68 + 92); fc.letterSpacing = "0px";
+        fc.fillStyle = grad(fc); fc.fillRect(W / 2 - 60, H * 0.68 + 132, 120, 6);
         if (kala) {
-          const lw = W * 0.62, lh = lw * (kala.height / kala.width);
-          fc.drawImage(kala, (W - lw) / 2, 570, lw, lh);
+          const lw = W * 0.46, lh = lw * (kala.height / kala.width);
+          fc.drawImage(tinted(kala, navy), (W - lw) / 2, H - 70 - lh, lw, lh);
         }
-        fc.strokeStyle = ink; fc.globalAlpha = 0.25; fc.lineWidth = 3;
-        fc.beginPath(); fc.moveTo(90, 760); fc.lineTo(W - 90, 760); fc.stroke(); fc.globalAlpha = 1;
-        fc.fillStyle = ink; fc.font = "900 112px Arial";
-        fc.fillText("CREW", W / 2, 840);
-        fc.font = "bold 30px Arial"; fc.globalAlpha = 0.8;
-        fc.fillText("M E M B E R   P A S S", W / 2, 910); fc.globalAlpha = 1;
-        fc.font = "bold 34px Arial";
-        fc.fillText("KOMUNITAS KALA MUDA", W / 2, H - 70);
-        // Back: big "n" emblem.
-        bc.textAlign = "center"; bc.textBaseline = "middle";
-        if (nempo) {
-          const sx = nempo.width * 0.32, sy = nempo.height * 0.07, sw = nempo.width * 0.36, sh = nempo.height * 0.58;
-          const dw = W * 0.58, dh = dw * (sh / sw);
-          bc.globalAlpha = 0.95; bc.drawImage(nempo, sx, sy, sw, sh, (W - dw) / 2, 170, dw, dh); bc.globalAlpha = 1;
+        fc.restore(); punchSlot(fc);
+
+        // Back: navy with a large centred "n" emblem and the Kala Muda logo.
+        roundRect(bc, 0, 0, W, H, 36); bc.save(); bc.clip();
+        bc.fillStyle = navy; bc.fillRect(0, 0, W, H);
+        const halo = bc.createRadialGradient(W / 2, H * 0.42, 20, W / 2, H * 0.42, W * 0.75);
+        halo.addColorStop(0, violet); halo.addColorStop(1, "transparent");
+        bc.globalAlpha = 0.35; bc.fillStyle = halo; bc.fillRect(0, 0, W, H); bc.globalAlpha = 1;
+        emblem(bc, W * 0.22, H * 0.16, W * 0.56, 1);
+        if (kala) {
+          const lw = W * 0.5, lh = lw * (kala.height / kala.width);
+          bc.drawImage(kala, (W - lw) / 2, H * 0.72, lw, lh);
         }
-        bc.fillStyle = ink; bc.font = "bold 40px Arial";
-        bc.fillText("nempo  ×  KALA MUDA", W / 2, 760);
-        bc.font = "bold 30px Arial"; bc.globalAlpha = 0.8;
-        bc.fillText("KOMUNITAS KALA MUDA", W / 2, H - 70); bc.globalAlpha = 1;
+        bc.fillStyle = grad(bc); bc.fillRect(0, H - 34, W, 34);
+        bc.restore(); punchSlot(bc);
       }
       const edgeMat = new T.MeshStandardMaterial({ color: deep, roughness: 0.5 });
       const faceFront = new T.MeshStandardMaterial({ map: toTexture(front), roughness: 0.35, transparent: true, alphaTest: 0.5 });
