@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { Link } from "@/lib/wouter";
 import { BraceletSpinner } from "@/components/bracelet-spinner";
+import { LanyardSpinner } from "@/components/lanyard-spinner";
 import { Button } from "@/components/ui/button";
 import { Pause, Play } from "lucide-react";
 
@@ -37,7 +38,7 @@ const nempoSpin = pick(nempoFrames, [
   [13, 195], [15, 207], [14, 218], [16, 236], [17, 248], [18, 270], [19, 298], [21, 322], [22, 338], [23, 350],
 ]);
 
-const products: { name: string; frames?: Spin; bracelet?: boolean; desc: string; features: string[] }[] = [
+const products: { name: string; frames?: Spin; bracelet?: boolean; lanyard?: boolean; desc: string; features: string[] }[] = [
   {
     name: "Kemeja PDH Nempo × Kala Muda",
     frames: pick(pdhFrames, [[0, 0], [1, 20], [2, 60], [3, 90], [4, 145], [5, 160], [6, 180], [7, 205], [8, 235], [9, 270], [10, 310], [11, 335]]),
@@ -67,6 +68,12 @@ const products: { name: string; frames?: Spin; bracelet?: boolean; desc: string;
     bracelet: true,
     desc: "Konsep gelang silikon sporty navy, dengan band ramping dan dua garis biru-ungu yang senada dengan kemeja dan rompi komunitas.",
     features: ["Band ramping dengan tepi membulat", "Tulisan timbul Nempo dan Kala Muda di sisi luar", "Sisi dalam polos navy", "Dua garis biru-ungu di tepi gelang"],
+  },
+  {
+    name: "Lanyard Nempo × Kala Muda",
+    lanyard: true,
+    desc: "Konsep lanyard navy dengan tulisan Nempo dan Kala Muda berulang di sepanjang tali, garis tepi biru-ungu, dan ID card crew di dalam holder bening.",
+    features: ["Tali navy dengan tulisan di kedua sisi", "Garis tepi gradasi biru-ungu", "Kait besi putar dan ring untuk ID card", "ID card Crew Nempo × Kala Muda dengan lambang \"n\" di belakang"],
   },
 ];
 
@@ -214,7 +221,7 @@ export default function MerchandisePage() {
 
         {products.map((p) => (
         <article key={p.name} className="mt-8 overflow-hidden rounded-3xl border border-[#dce4fb] bg-white shadow-sm md:grid md:grid-cols-[1fr_1fr] md:items-stretch">
-          {p.bracelet ? <BraceletSpinner /> : p.frames ? <VestSpinner frames={p.frames} name={p.name} /> : null}
+          {p.lanyard ? <LanyardSpinner /> : p.bracelet ? <BraceletSpinner /> : p.frames ? <VestSpinner frames={p.frames} name={p.name} /> : null}
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-8">
             <span className="w-fit rounded-full bg-[#182b39] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Segera hadir</span>
             <h2 className="text-2xl font-black text-[#182b39]">{p.name}</h2>
