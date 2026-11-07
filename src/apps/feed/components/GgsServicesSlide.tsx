@@ -130,6 +130,7 @@ export const GGS_SERVICES_SLIDES: ServicesSlideData[] = [
     slide: 18,
     category: 'Bundling Package',
     tagline: 'Lebih lengkap, lebih hemat',
+    dense: true,
     groups: [
       {
         items: [
