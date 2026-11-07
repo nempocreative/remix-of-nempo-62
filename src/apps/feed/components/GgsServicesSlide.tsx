@@ -50,6 +50,7 @@ export const GGS_SERVICES_SLIDES: ServicesSlideData[] = [
     slide: 14,
     category: 'Haircuts & Styling',
     tagline: 'Rambut rapi setiap hari',
+    dense: true,
     groups: [
       {
         items: [
