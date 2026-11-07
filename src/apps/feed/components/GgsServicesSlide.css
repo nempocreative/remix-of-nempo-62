@@ -47,13 +47,13 @@
 }
 .ggsv-title em { font-style: italic; font-weight: 500; }
 .ggsv-category {
-  margin-top: 3.2cqw;
+  margin-top: 3.6cqw;
   display: flex; flex-direction: column; align-items: flex-start; gap: 1cqw;
 }
 .ggsv-category-name {
-  display: inline-block; padding: 1cqw 3.2cqw; border-radius: 999px;
+  display: inline-block; padding: .7cqw 2.4cqw; border-radius: 999px;
   background: linear-gradient(100deg, var(--ggsv-hot), var(--ggsv-magenta));
-  color: #fff; font-size: 3.2cqw; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  color: #fff; font-size: 2.5cqw; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   box-shadow: 0 1cqw 3cqw rgba(194,24,107,.35);
 }
 .ggsv-category-tagline { font-size: 2.8cqw; font-weight: 600; font-style: italic; opacity: .75; margin-top: .4cqw; }
