@@ -12,6 +12,8 @@ export type ServicesSlideData = {
   category: string;
   tagline: string;
   groups: ServiceGroup[];
+  /** Tighter rows for the fullest slide so every name fits. */
+  dense?: boolean;
 };
 
 /**
@@ -107,6 +109,7 @@ export const GGS_SERVICES_SLIDES: ServicesSlideData[] = [
     slide: 17,
     category: 'Massage, Body & Face',
     tagline: 'Rileks dari ujung kepala sampai kaki',
+    dense: true,
     groups: [
       {
         heading: 'Massage',
@@ -147,7 +150,7 @@ export function GgsServicesSlide({ exportRef, data }: { exportRef?: RefObject<HT
   return (
     <div
       ref={exportRef as RefObject<HTMLDivElement | null>}
-      className="ggsv-root"
+      className={data.dense ? 'ggsv-root ggsv-root--dense' : 'ggsv-root'}
       role="img"
       aria-label={`GGS Beauty layanan ${data.category}: ${data.groups.flatMap((g) => g.items).join(', ')}.`}
     >
@@ -189,10 +192,6 @@ export function GgsServicesSlide({ exportRef, data }: { exportRef?: RefObject<HT
           </div>
         ))}
       </section>
-
-      <p className="ggsv-note" aria-hidden="true">
-        Tanya harga &amp; booking: DM Instagram atau WhatsApp kami
-      </p>
 
       <img className="ggsv-watermark" src={ggsWatermark.url} alt="" aria-hidden="true" draggable={false} />
     </div>
