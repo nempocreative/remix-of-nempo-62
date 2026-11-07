@@ -29,8 +29,8 @@
   object-fit: contain; z-index: 6; pointer-events: none;
 }
 
-/* Headline */
-.ggsv-head { position: absolute; z-index: 3; left: 7cqw; right: 7cqw; top: 12.5cqw; }
+/* Headline (right of the logo in the header overlay) */
+.ggsv-head { position: absolute; z-index: 3; left: 24cqw; right: 6cqw; top: 12.5cqw; }
 .ggsv-kicker {
   display: flex; align-items: center; gap: 2cqw;
   font-size: 2.8cqw; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
@@ -40,44 +40,44 @@
   background: linear-gradient(90deg, var(--ggsv-hot), #ff9bcd);
 }
 .ggsv-title {
-  margin-top: 1.4cqw;
+  margin-top: .8cqw;
   font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700; font-size: 11.5cqw; line-height: .98;
+  font-weight: 700; font-size: 9cqw; line-height: .98;
   color: var(--ggsv-magenta);
 }
 .ggsv-title em { font-style: italic; font-weight: 500; }
 .ggsv-category {
-  margin-top: 2.2cqw;
+  margin-top: 1.6cqw;
   display: flex; align-items: baseline; gap: 2.4cqw; flex-wrap: wrap;
 }
 .ggsv-category-name {
-  display: inline-block; padding: 1.1cqw 3.4cqw; border-radius: 999px;
+  display: inline-block; padding: 1cqw 3.2cqw; border-radius: 999px;
   background: linear-gradient(100deg, var(--ggsv-hot), var(--ggsv-magenta));
-  color: #fff; font-size: 3.6cqw; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  color: #fff; font-size: 3.2cqw; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   box-shadow: 0 1cqw 3cqw rgba(194,24,107,.35);
 }
-.ggsv-category-tagline { font-size: 3cqw; font-weight: 600; font-style: italic; opacity: .75; }
+.ggsv-category-tagline { font-size: 2.8cqw; font-weight: 600; font-style: italic; opacity: .75; }
 
 /* Service list card */
 .ggsv-card {
-  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 40cqw; bottom: 12.5cqw;
+  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 34cqw; bottom: 10.5cqw;
   border-radius: 4cqw;
   background: rgba(255,255,255,.94);
   box-shadow: 0 2cqw 6cqw rgba(74,14,51,.28);
-  padding: 3.4cqw 5cqw;
+  padding: 2.6cqw 5cqw;
   display: flex; flex-direction: column; justify-content: space-evenly;
   overflow: hidden;
 }
 .ggsv-group { display: flex; flex-direction: column; }
-.ggsv-group + .ggsv-group { margin-top: 1.6cqw; padding-top: 1.6cqw; border-top: .3cqw dashed rgba(194,24,107,.25); }
+.ggsv-group + .ggsv-group { margin-top: 1.2cqw; padding-top: 1.2cqw; border-top: .3cqw dashed rgba(194,24,107,.25); }
 .ggsv-group-heading {
-  font-size: 3.1cqw; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ggsv-hot); margin-bottom: .8cqw;
+  font-size: 2.9cqw; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ggsv-hot); margin-bottom: .5cqw;
 }
 .ggsv-list { list-style: none; display: flex; flex-direction: column; }
 .ggsv-item {
   display: flex; align-items: center; gap: 2.4cqw;
-  padding: .85cqw 0;
+  padding: .7cqw 0;
 }
 .ggsv-item + .ggsv-item { border-top: .25cqw solid rgba(194,24,107,.1); }
 .ggsv-index {
@@ -87,11 +87,11 @@
   background: var(--ggsv-blush); color: var(--ggsv-magenta);
   font-size: 2.3cqw; font-weight: 800; letter-spacing: .04em;
 }
-.ggsv-name { font-size: 3.15cqw; font-weight: 600; line-height: 1.2; }
+.ggsv-name { font-size: 2.95cqw; font-weight: 600; line-height: 1.2; }
 
 .ggsv-note {
-  position: absolute; z-index: 3; left: 6cqw; right: 6cqw; bottom: 6.4cqw;
+  position: absolute; z-index: 3; left: 6cqw; right: 6cqw; bottom: 5.2cqw;
   text-align: center;
-  font-size: 2.9cqw; font-weight: 700; letter-spacing: .02em;
+  font-size: 2.6cqw; font-weight: 700; letter-spacing: .02em;
   color: var(--ggsv-magenta);
 }
