@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] GGS Feed slide 13–18: daftar nama layanan dari Price_cetak.pdf tanpa harga, satu kategori per slide (Nail Art, Haircuts & Styling, Colouring & Creambath, Hair Treatment & Keratin, Massage Body & Face, Bundling Package); statis dengan header/footer asli, PNG 3× per slide, tombol unduh dan tampilan diuji, tiga tes lolos.
+
 - [x] GGS Feed slide 12: “We are open”, dua foto kiriman diedit memakai blazer pink, gerakan menyambut, ajakan perawatan, tombol jeda/ulang teruji komputer/ponsel, MP4 1080×1440 30 fps 8 detik. Enam tes slide lama lolos; tes media lama masih menemukan 134 pointer proyek asal yang tidak terkait slide baru.
 
 - [x] PDH lengan panjang: versi tambahan senada kemeja pendek, dua belas foto transparan; play/jeda dan ukuran komputer/ponsel diuji, empat tes spinner lolos.
