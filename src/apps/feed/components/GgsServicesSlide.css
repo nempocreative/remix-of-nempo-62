@@ -60,7 +60,8 @@
 
 /* Service list card */
 .ggsv-card {
-  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 39cqw; bottom: 11cqw;
+  /* bottom 16cqw keeps the last row clear of the footer shape (top ~13.3cqw). */
+  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 39cqw; bottom: 16cqw;
   border-radius: 4cqw;
   background: rgba(255,255,255,.94);
   box-shadow: 0 2cqw 6cqw rgba(74,14,51,.28);
