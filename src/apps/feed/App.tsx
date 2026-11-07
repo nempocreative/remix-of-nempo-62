@@ -6,6 +6,21 @@ import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4.asset.json';
 import ggsRatusBenefitPng from '@/assets/ggs-feed-08-ratus-manfaat.png';
 import ggsNailPahlawanPng from '@/assets/ggs-feed-09-nail-pahlawan.png';
 import ggsPromoSpesialPng from '@/assets/ggs-feed-11-promo-spesial.png';
+import ggsLayanan13Png from '@/assets/ggs-feed-13-layanan.png';
+import ggsLayanan14Png from '@/assets/ggs-feed-14-layanan.png';
+import ggsLayanan15Png from '@/assets/ggs-feed-15-layanan.png';
+import ggsLayanan16Png from '@/assets/ggs-feed-16-layanan.png';
+import ggsLayanan17Png from '@/assets/ggs-feed-17-layanan.png';
+import ggsLayanan18Png from '@/assets/ggs-feed-18-layanan.png';
+
+const GGS_LAYANAN_PNGS: Record<number, string> = {
+  13: ggsLayanan13Png,
+  14: ggsLayanan14Png,
+  15: ggsLayanan15Png,
+  16: ggsLayanan16Png,
+  17: ggsLayanan17Png,
+  18: ggsLayanan18Png,
+};
 import ggsPromoSpesialVideo from '@/assets/ggs-feed-10-promo-spesial.mp4';
 import ggsWeAreOpenVideo from '@/assets/ggs-feed-12-we-are-open.mp4';
 import { PrebuiltPngDownload } from './components/PrebuiltPngDownload';
@@ -2793,7 +2808,7 @@ function App() {
             ? 1402
             : isGgsStory
               ? 1920
-              : activeFeed === 'nempo' || (isGgsFeed && (activeClientSlide === 8 || activeClientSlide === 9 || activeClientSlide === 11))
+              : activeFeed === 'nempo' || (isGgsFeed && (activeClientSlide === 8 || activeClientSlide === 9 || activeClientSlide === 11 || activeClientSlide >= 13))
                 ? 1440
                 : 1350;
       const renderScale = isHighQualityNempoStorySlide
@@ -3214,12 +3229,12 @@ function App() {
                   Video {activeClientSlide === 7 ? 20 : 15} detik · 1080×1440 · 30 fps.
                 </p>
               </>
-            ) : activeFeed === 'client' && (activeClientSlide === 8 || activeClientSlide === 9 || activeClientSlide === 11) ? (
+            ) : activeFeed === 'client' && (activeClientSlide === 8 || activeClientSlide === 9 || activeClientSlide === 11 || GGS_LAYANAN_PNGS[activeClientSlide]) ? (
               <>
                 <PrebuiltPngDownload
                   key={activeClientSlide}
-                  src={activeClientSlide === 11 ? ggsPromoSpesialPng : activeClientSlide === 9 ? ggsNailPahlawanPng : ggsRatusBenefitPng}
-                  fileName={activeClientSlide === 11 ? 'GGS-Feed-11-Promo-Spesial.png' : activeClientSlide === 9 ? 'GGS-Feed-09-Nail-Art-Hari-Pahlawan.png' : 'GGS-Feed-08-Manfaat-Ratus.png'}
+                  src={GGS_LAYANAN_PNGS[activeClientSlide] ?? (activeClientSlide === 11 ? ggsPromoSpesialPng : activeClientSlide === 9 ? ggsNailPahlawanPng : ggsRatusBenefitPng)}
+                  fileName={GGS_LAYANAN_PNGS[activeClientSlide] ? `GGS-Feed-${activeClientSlide}-Layanan.png` : activeClientSlide === 11 ? 'GGS-Feed-11-Promo-Spesial.png' : activeClientSlide === 9 ? 'GGS-Feed-09-Nail-Art-Hari-Pahlawan.png' : 'GGS-Feed-08-Manfaat-Ratus.png'}
                   label="Download PNG · 3×"
                   className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
                 />
