@@ -48,7 +48,7 @@
 .ggsv-title em { font-style: italic; font-weight: 500; }
 .ggsv-category {
   margin-top: 1.6cqw;
-  display: flex; align-items: baseline; gap: 2.4cqw; flex-wrap: wrap;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1cqw;
 }
 .ggsv-category-name {
   display: inline-block; padding: 1cqw 3.2cqw; border-radius: 999px;
@@ -56,16 +56,16 @@
   color: #fff; font-size: 3.2cqw; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   box-shadow: 0 1cqw 3cqw rgba(194,24,107,.35);
 }
-.ggsv-category-tagline { font-size: 2.8cqw; font-weight: 600; font-style: italic; opacity: .75; }
+.ggsv-category-tagline { font-size: 2.8cqw; font-weight: 600; font-style: italic; opacity: .75; margin-top: .4cqw; }
 
 /* Service list card */
 .ggsv-card {
-  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 36cqw; bottom: 12cqw;
+  position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 39cqw; bottom: 11cqw;
   border-radius: 4cqw;
   background: rgba(255,255,255,.94);
   box-shadow: 0 2cqw 6cqw rgba(74,14,51,.28);
   padding: 2.6cqw 5cqw;
-  display: flex; flex-direction: column; justify-content: space-evenly;
+  display: flex; flex-direction: column; justify-content: center; gap: 2cqw;
   overflow: hidden;
 }
 .ggsv-group { display: flex; flex-direction: column; }
@@ -90,7 +90,7 @@
 .ggsv-name { font-size: 2.95cqw; font-weight: 600; line-height: 1.2; }
 
 /* Dense variant for the fullest slide (17) */
-.ggsv-root--dense .ggsv-card { padding: 2cqw 5cqw; }
+.ggsv-root--dense .ggsv-card { padding: 2cqw 5cqw; gap: .8cqw; }
 .ggsv-root--dense .ggsv-group + .ggsv-group { margin-top: .8cqw; padding-top: .8cqw; }
 .ggsv-root--dense .ggsv-group-heading { font-size: 2.6cqw; margin-bottom: .3cqw; }
 .ggsv-root--dense .ggsv-item { padding: .45cqw 0; }
